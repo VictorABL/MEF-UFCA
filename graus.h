@@ -3,6 +3,7 @@
 #define GRAUS_H
 
 // Classe de definição dos graus de liberdade da estrutura.
+
 namespace FEM {
 
 template<class Tipo>
@@ -11,6 +12,7 @@ private:
 
     // Define o vetor de numeração dos graus de liberdade.
     std::vector<Tipo> grausDeLiberdade;
+
     size_t numeroDeGrausDeLiberdade;
     // Define o contador para os graus livres, como é um atributo
     // que é definido para toda a estrutura, independe de qualquer
