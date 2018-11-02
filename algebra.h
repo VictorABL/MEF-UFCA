@@ -40,7 +40,8 @@ FEM::Matriz<FEM::EstruturaMatrizSimetricaCheia, T> MultiplicacaoTripla(const FEM
     const FEM::Matriz<Estrutura2, T> &matriz_b, const T constante = 1) {
 
     // Inicialização da matriz de saída:
-    FEM::Matriz<FEM::EstruturaMatrizSimetricaCheia, T> matriz_c(matriz_a.NumeroDeColunas(), matriz_a.NumeroDeColunas());
+    FEM::Matriz<FEM::EstruturaMatrizSimetricaCheia, T>
+    matriz_c(matriz_a.NumeroDeColunas(), matriz_a.NumeroDeColunas());
 
     // Variável auxiliar para as operações realizadas:
     T auxiliar;

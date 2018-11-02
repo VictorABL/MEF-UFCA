@@ -20,8 +20,9 @@ private:
 public:
 
     // Construtor:
-    GrausDeLiberdade(size_t numeroDeGrausDeLiberdade): grausDeLiberdade(numeroDeGrausDeLiberdade),
-    numeroDeGrausDeLiberdade(numeroDeGrausDeLiberdade) {}
+    GrausDeLiberdade(size_t numeroDeGrausDeLiberdade)
+                    : grausDeLiberdade(numeroDeGrausDeLiberdade),
+                      numeroDeGrausDeLiberdade(numeroDeGrausDeLiberdade) {}
 
     // Destrutor:
     ~GrausDeLiberdade() {};
