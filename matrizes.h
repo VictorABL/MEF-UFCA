@@ -68,7 +68,8 @@ public:
 
         for(size_t linha = 0; linha < NumeroDeLinhas(); linha++) {
             for(size_t coluna = 0; coluna < NumeroDeColunas(); coluna++)
-                matriz_c(linha, coluna) = matriz_a(linha, coluna) + dadosDaMatriz.GetElemento(linha, coluna);
+                matriz_c(linha, coluna) = matriz_a(linha, coluna) +
+                                          dadosDaMatriz.GetElemento(linha, coluna);
         }
 
         return std::move(matriz_c);
@@ -85,7 +86,8 @@ public:
         for(size_t linha = 0; linha < matriz_c.NumeroDeLinhas(); linha++) {
             for(size_t coluna = 0; coluna < matriz_c.NumeroDeColunas(); coluna++) {
                 for(size_t vez = 0; vez < NumeroDeColunas(); vez++)
-                    matriz_c(linha,coluna) += dadosDaMatriz.GetElemento(linha, vez) * matriz_a(vez, coluna);
+                    matriz_c(linha,coluna) += dadosDaMatriz.GetElemento(linha, vez) *
+                                              matriz_a(vez, coluna);
             }
         }
         return std::move(matriz_c);
@@ -151,7 +153,8 @@ public:
 
         for(size_t linha = 0; linha < NumeroDeLinhas(); linha++) {
             for(size_t coluna = 0; coluna < NumeroDeColunas(); coluna++)
-                matriz_c(linha, coluna) = matriz_a(linha, coluna) + dadosDaMatriz.GetElemento(linha, coluna);
+                matriz_c(linha, coluna) = matriz_a(linha, coluna) +
+                                          dadosDaMatriz.GetElemento(linha, coluna);
         }
 
         return std::move(matriz_c);
@@ -167,7 +170,8 @@ public:
         for(size_t linha = 0; linha < matriz_c.NumeroDeLinhas(); linha++) {
             for(size_t coluna = 0; coluna < matriz_c.NumeroDeColunas(); coluna++) {
                 for(size_t vez = 0; vez < NumeroDeColunas(); vez++)
-                    matriz_c(linha,coluna) += dadosDaMatriz.GetElemento(linha, vez) * matriz_a(vez, coluna);
+                    matriz_c(linha,coluna) += dadosDaMatriz.GetElemento(linha, vez) *
+                                              matriz_a(vez, coluna);
             }
         }
         return std::move(matriz_c);

@@ -16,8 +16,9 @@ private:
 public:
 
     // Contrutor:
-    No(const Estrutura<Tipo> &vetorEntrada, size_t numeroDeGrausDeLiberdade = 0):
-    dimensao(vetorEntrada), vetorGrausDeLiberdade(numeroDeGrausDeLiberdade) {}
+    No(const Estrutura<Tipo> &vetorEntrada, size_t numeroDeGrausDeLiberdade = 0)
+    : dimensao(vetorEntrada),
+      vetorGrausDeLiberdade(numeroDeGrausDeLiberdade) {}
 
     // Destrutor:
     ~No() {}

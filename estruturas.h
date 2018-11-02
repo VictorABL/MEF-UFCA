@@ -29,8 +29,9 @@ private:
 
 public:
     // Inicialização da classe de maneira parametrizada (construtor).
-    EstruturaVetor(size_t tamanho, T inicializar = 0): elementos(tamanho, inicializar)
-    , tamanho(tamanho) {}
+    EstruturaVetor(size_t tamanho, T inicializar = 0)
+                  : elementos(tamanho, inicializar),
+                    tamanho(tamanho) {}
 
     // Destrutor:
     ~EstruturaVetor() {}
@@ -76,8 +77,10 @@ private:
 public:
     // Inicialização da classe (construtor) é padrão, uma vez que
     // a classe é uma abstração para a conteção de dados.
-    EstruturaMatrizGenerica(const size_t linhas = 1, const size_t colunas = 1): elementos(linhas * colunas)
-    ,numeroDeLinhas(linhas), numeroDeColunas(colunas) {}
+    EstruturaMatrizGenerica(const size_t linhas = 1, const size_t colunas = 1)
+                           : elementos(linhas * colunas),
+                             numeroDeLinhas(linhas),
+                             numeroDeColunas(colunas) {}
 
     // Destrutor:
     ~EstruturaMatrizGenerica() {}
@@ -135,9 +138,13 @@ public:
 
     // Construtor:
     EstruturaMatrizSimetricaCRS(const std::vector<T> &elemento, const std::vector<size_t> &posicaoColuna,
-    const std::vector<size_t> &enderecoDiagonal, const size_t dimensao = 1):
-    elementos(elemento), posicaoColunas(posicaoColuna),
-    enderecoDiagonais(enderecoDiagonal), dimensoes(dimensao) {enderecoDiagonais.push_back(posicaoColuna.size());}
+                                const std::vector<size_t> &enderecoDiagonal, const size_t dimensao = 1)
+
+                                : elementos(elemento),
+                                  posicaoColunas(posicaoColuna),
+                                  enderecoDiagonais(enderecoDiagonal),
+                                  dimensoes(dimensao)
+                                  {enderecoDiagonais.push_back(posicaoColuna.size());}
 
     // Destrutor:
     ~EstruturaMatrizSimetricaCRS() {}
@@ -223,8 +230,10 @@ private:
 public:
 
     // Construtor:
-    EstruturaMatrizSimetricaCheia(size_t linhas = 1, size_t colunas = 1): elementos(((2 + linhas) * linhas)/2, 0)
-    ,numeroDeLinhas(linhas), numeroDeColunas(colunas) {}
+    EstruturaMatrizSimetricaCheia(size_t linhas = 1, size_t colunas = 1)
+                                 : elementos(((2 + linhas) * linhas)/2, 0),
+                                 numeroDeLinhas(linhas),
+                                 numeroDeColunas(colunas) {}
 
     // Destrutor:
     ~EstruturaMatrizSimetricaCheia() {}
