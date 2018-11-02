@@ -1,0 +1,68 @@
+MATERIAIS_H	/home/victor/Documentos/Programas C++/MEF - UFCA/materiais.h	/^#define MATERIAIS_H$/;"	macro	line:3
+FEM	/home/victor/Documentos/Programas C++/MEF - UFCA/materiais.h	/^namespace FEM {$/;"	namespace	line:13
+Material	/home/victor/Documentos/Programas C++/MEF - UFCA/materiais.h	/^class Material {$/;"	class	line:16	namespace:FEM
+nome	/home/victor/Documentos/Programas C++/MEF - UFCA/materiais.h	/^    std::string nome;$/;"	member	line:20	class:FEM::Material
+moduloElasticidade	/home/victor/Documentos/Programas C++/MEF - UFCA/materiais.h	/^    T moduloElasticidade, coeficientePoisson;$/;"	member	line:21	class:FEM::Material
+coeficientePoisson	/home/victor/Documentos/Programas C++/MEF - UFCA/materiais.h	/^    T moduloElasticidade, coeficientePoisson;$/;"	member	line:21	class:FEM::Material
+Material	/home/victor/Documentos/Programas C++/MEF - UFCA/materiais.h	/^    Material (const std::string &nome, const T moduloElasticidade,$/;"	function	line:26	class:FEM::Material	signature:(const std::string &nome, const T moduloElasticidade, const T coeficientePoisson)
+~Material	/home/victor/Documentos/Programas C++/MEF - UFCA/materiais.h	/^    ~Material () {}$/;"	function	line:32	class:FEM::Material	signature:()
+ModuloElasticidade	/home/victor/Documentos/Programas C++/MEF - UFCA/materiais.h	/^    const T ModuloElasticidade() const {return moduloElasticidade;}$/;"	function	line:35	class:FEM::Material	signature:() const
+CoeficientePoisson	/home/victor/Documentos/Programas C++/MEF - UFCA/materiais.h	/^    const T CoeficientePoisson() const {return coeficientePoisson;}$/;"	function	line:36	class:FEM::Material	signature:() const
+GEOMETRIAS_H	/home/victor/Documentos/Programas C++/MEF - UFCA/geometrias.h	/^#define GEOMETRIAS_H$/;"	macro	line:3
+FEM	/home/victor/Documentos/Programas C++/MEF - UFCA/geometrias.h	/^namespace FEM {$/;"	namespace	line:13
+QuadrilateroIsoparametrico	/home/victor/Documentos/Programas C++/MEF - UFCA/geometrias.h	/^class QuadrilateroIsoparametrico {$/;"	class	line:16	namespace:FEM
+nosDoElemento	/home/victor/Documentos/Programas C++/MEF - UFCA/geometrias.h	/^    std::unique_ptr< std::vector<FEM::No<FEM::Ponto2D, T> > > nosDoElemento;$/;"	member	line:25	class:FEM::QuadrilateroIsoparametrico
+material	/home/victor/Documentos/Programas C++/MEF - UFCA/geometrias.h	/^    FEM::Material<T> material;$/;"	member	line:27	class:FEM::QuadrilateroIsoparametrico
+matrizConstitutiva	/home/victor/Documentos/Programas C++/MEF - UFCA/geometrias.h	/^    FEM::Matriz<> matrizConstitutiva;$/;"	member	line:29	class:FEM::QuadrilateroIsoparametrico
+espessura	/home/victor/Documentos/Programas C++/MEF - UFCA/geometrias.h	/^    T espessura;$/;"	member	line:30	class:FEM::QuadrilateroIsoparametrico
+dimensao	/home/victor/Documentos/Programas C++/MEF - UFCA/geometrias.h	/^    int dimensao = 2;$/;"	member	line:32	class:FEM::QuadrilateroIsoparametrico
+DefinirMatrizDeForma	/home/victor/Documentos/Programas C++/MEF - UFCA/geometrias.h	/^    FEM::Matriz<> DefinirMatrizDeForma(const T pontoX, const T pontoY) const {$/;"	function	line:35	class:FEM::QuadrilateroIsoparametrico	signature:(const T pontoX, const T pontoY) const
+MatrizJacobiana	/home/victor/Documentos/Programas C++/MEF - UFCA/geometrias.h	/^    FEM::Matriz<> MatrizJacobiana(const T pontoX, const T pontoY) const {$/;"	function	line:54	class:FEM::QuadrilateroIsoparametrico	signature:(const T pontoX, const T pontoY) const
+DeterminanteMatrizJacobiana	/home/victor/Documentos/Programas C++/MEF - UFCA/geometrias.h	/^    T DeterminanteMatrizJacobiana(const FEM::Matriz<> &matrizJacobiana) const$/;"	function	line:85	class:FEM::QuadrilateroIsoparametrico	signature:(const FEM::Matriz< &matrizJacobiana) const
+MatrizJacobianaInversa	/home/victor/Documentos/Programas C++/MEF - UFCA/geometrias.h	/^    FEM::Matriz<> MatrizJacobianaInversa(const FEM::Matriz<> &matrizJacobiana, const T &determinanteMatrizJacobiana) const {$/;"	function	line:90	class:FEM::QuadrilateroIsoparametrico	signature:(const FEM::Matriz< &matrizJacobiana, const T &determinanteMatrizJacobiana) const
+MatrizH	/home/victor/Documentos/Programas C++/MEF - UFCA/geometrias.h	/^    FEM::Matriz<> MatrizH(const FEM::Matriz<> &matrizJacobianaInversa) const {$/;"	function	line:105	class:FEM::QuadrilateroIsoparametrico	signature:(const FEM::Matriz< &matrizJacobianaInversa) const
+MatrizDeformacao	/home/victor/Documentos/Programas C++/MEF - UFCA/geometrias.h	/^    FEM::Matriz<> MatrizDeformacao(const T pontoX, const T pontoY) const {$/;"	function	line:125	class:FEM::QuadrilateroIsoparametrico	signature:(const T pontoX, const T pontoY) const
+MatrizCinematica	/home/victor/Documentos/Programas C++/MEF - UFCA/geometrias.h	/^    FEM::Matriz<> MatrizCinematica(const T pontoX, const T pontoY, const FEM::Matriz<> &matrizJacobianaInversa) const {$/;"	function	line:150	class:FEM::QuadrilateroIsoparametrico	signature:(const T pontoX, const T pontoY, const FEM::Matriz<> &matrizJacobianaInversa) const
+MatrizConstitutiva	/home/victor/Documentos/Programas C++/MEF - UFCA/geometrias.h	/^    void MatrizConstitutiva() {$/;"	function	line:173	class:FEM::QuadrilateroIsoparametrico	signature:()
+QuadrilateroIsoparametrico	/home/victor/Documentos/Programas C++/MEF - UFCA/geometrias.h	/^    QuadrilateroIsoparametrico(const std::vector< FEM::No<FEM::Ponto2D, T> > &coordenadasGeometricas,$/;"	function	line:189	class:FEM::QuadrilateroIsoparametrico	signature:(const std::vector< FEM::No<FEM::Ponto2D, T> > &coordenadasGeometricas, const FEM::Material<T> &material, const T espessura)
+~QuadrilateroIsoparametrico	/home/victor/Documentos/Programas C++/MEF - UFCA/geometrias.h	/^    ~QuadrilateroIsoparametrico () {}$/;"	function	line:199	class:FEM::QuadrilateroIsoparametrico	signature:()
+Dimensao	/home/victor/Documentos/Programas C++/MEF - UFCA/geometrias.h	/^    int Dimensao() const {return dimensao;}$/;"	function	line:204	class:FEM::QuadrilateroIsoparametrico	signature:() const
+ProdutoTriplo	/home/victor/Documentos/Programas C++/MEF - UFCA/geometrias.h	/^    FEM::Matriz<FEM::EstruturaMatrizSimetricaCheia, T> ProdutoTriplo(const T pontoX = 0.0,$/;"	function	line:210	class:FEM::QuadrilateroIsoparametrico	signature:(const T pontoX = 0.0, const T pontoY = 0.0, const T PontoZ = 0.0) const
+MatrizRigidezElementar	/home/victor/Documentos/Programas C++/MEF - UFCA/geometrias.h	/^    auto MatrizRigidezElementar() const  {$/;"	function	line:224	class:FEM::QuadrilateroIsoparametrico	signature:() const
+OBJECTS	/home/victor/Documentos/Programas C++/MEF - UFCA/Makefile	/^OBJECTS = testes.o matrizes.o componentes.o \\$/;"	macro	line:2
+DEPEND	/home/victor/Documentos/Programas C++/MEF - UFCA/Makefile	/^DEPEND = testes.cpp estruturas.h matrizes.h \\$/;"	macro	line:5
+GRAUS_H	/home/victor/Documentos/Programas C++/MEF - UFCA/graus.h	/^#define GRAUS_H$/;"	macro	line:3
+FEM	/home/victor/Documentos/Programas C++/MEF - UFCA/graus.h	/^namespace FEM {$/;"	namespace	line:11
+GrausDeLiberdade	/home/victor/Documentos/Programas C++/MEF - UFCA/graus.h	/^class GrausDeLiberdade {$/;"	class	line:15	namespace:FEM
+grausDeLiberdade	/home/victor/Documentos/Programas C++/MEF - UFCA/graus.h	/^    std::vector<Tipo> grausDeLiberdade;$/;"	member	line:19	class:FEM::GrausDeLiberdade
+numeroDeGrausDeLiberdade	/home/victor/Documentos/Programas C++/MEF - UFCA/graus.h	/^    size_t numeroDeGrausDeLiberdade;$/;"	member	line:20	class:FEM::GrausDeLiberdade
+numeroDoGrauLivre	/home/victor/Documentos/Programas C++/MEF - UFCA/graus.h	/^    static int numeroDoGrauLivre;$/;"	member	line:24	class:FEM::GrausDeLiberdade
+GrausDeLiberdade	/home/victor/Documentos/Programas C++/MEF - UFCA/graus.h	/^    GrausDeLiberdade(size_t numeroDeGrausDeLiberdade): grausDeLiberdade(numeroDeGrausDeLiberdade),$/;"	function	line:29	class:FEM::GrausDeLiberdade	signature:(size_t numeroDeGrausDeLiberdade)
+~GrausDeLiberdade	/home/victor/Documentos/Programas C++/MEF - UFCA/graus.h	/^    ~GrausDeLiberdade() {};$/;"	function	line:33	class:FEM::GrausDeLiberdade	signature:()
+EnumerarGrausDeLiberdade	/home/victor/Documentos/Programas C++/MEF - UFCA/graus.h	/^    void EnumerarGrausDeLiberdade() {$/;"	function	line:37	class:FEM::GrausDeLiberdade	signature:()
+RestringirGrausDeLiberdade	/home/victor/Documentos/Programas C++/MEF - UFCA/graus.h	/^    void RestringirGrausDeLiberdade(const std::vector<int> &vetorDeRestricao)  {$/;"	function	line:48	class:FEM::GrausDeLiberdade	signature:(const std::vector<int> &vetorDeRestricao)
+GetGrausDeLiberdade	/home/victor/Documentos/Programas C++/MEF - UFCA/graus.h	/^    std::vector<Tipo> &GetGrausDeLiberdade()  {return grausDeLiberdade;}$/;"	function	line:56	class:FEM::GrausDeLiberdade	signature:()
+numeroDoGrauLivre	/home/victor/Documentos/Programas C++/MEF - UFCA/graus.h	/^int FEM::GrausDeLiberdade<T>::numeroDoGrauLivre = 0;$/;"	member	line:62	class:FEM::FEM::GrausDeLiberdade
+Imprimir	/home/victor/Documentos/Programas C++/MEF - UFCA/testes.cpp	/^void Imprimir(const FEM::Matriz<Est, T> &matriz_a) {$/;"	function	line:22	signature:(const FEM::Matriz<Est, T> &matriz_a)
+main	/home/victor/Documentos/Programas C++/MEF - UFCA/testes.cpp	/^int main() {$/;"	function	line:32	signature:()
+NO_H	/home/victor/Documentos/Programas C++/MEF - UFCA/no.h	/^#define NO_H$/;"	macro	line:3
+FEM	/home/victor/Documentos/Programas C++/MEF - UFCA/no.h	/^namespace FEM {$/;"	namespace	line:5
+No	/home/victor/Documentos/Programas C++/MEF - UFCA/no.h	/^class No {$/;"	class	line:8	namespace:FEM
+dimensao	/home/victor/Documentos/Programas C++/MEF - UFCA/no.h	/^    Estrutura<Tipo> dimensao;$/;"	member	line:13	class:FEM::No
+grausDeLiberdade	/home/victor/Documentos/Programas C++/MEF - UFCA/no.h	/^    GrausDeLiberdade<int> grausDeLiberdade;$/;"	member	line:15	class:FEM::No
+No	/home/victor/Documentos/Programas C++/MEF - UFCA/no.h	/^    No(const Estrutura<Tipo> &vetorEntrada, size_t numeroDeGrausDeLiberdade = 0):$/;"	function	line:20	class:FEM::No	signature:(const Estrutura<Tipo> &vetorEntrada, size_t numeroDeGrausDeLiberdade = 0)
+~No	/home/victor/Documentos/Programas C++/MEF - UFCA/no.h	/^    ~No() {}$/;"	function	line:24	class:FEM::No	signature:()
+GetCoordenadas	/home/victor/Documentos/Programas C++/MEF - UFCA/no.h	/^    std::vector<Tipo> GetCoordenadas() {return dimensao.GetCoordenada();}$/;"	function	line:27	class:FEM::No	signature:()
+GetCoordenadas	/home/victor/Documentos/Programas C++/MEF - UFCA/no.h	/^    const std::vector<Tipo> GetCoordenadas() const {return dimensao.GetCoordenada();}$/;"	function	line:30	class:FEM::No	signature:() const
+EnumeraGrausDeLiberdade	/home/victor/Documentos/Programas C++/MEF - UFCA/no.h	/^    void EnumeraGrausDeLiberdade() {this->grausDeLiberdade.EnumerarGrausDeLiberdade();}$/;"	function	line:33	class:FEM::No	signature:()
+GetVetorGrausDeLiberdade	/home/victor/Documentos/Programas C++/MEF - UFCA/no.h	/^    auto &GetVetorGrausDeLiberdade()$/;"	function	line:36	class:FEM::No	signature:()
+RestringirGraus	/home/victor/Documentos/Programas C++/MEF - UFCA/no.h	/^    void RestringirGraus(const std::vector<int> &vetorDeRestricao) {$/;"	function	line:40	class:FEM::No	signature:(const std::vector<int> &vetorDeRestricao)
+APOIO_H	/home/victor/Documentos/Programas C++/MEF - UFCA/apoio.h	/^#define APOIO_H$/;"	macro	line:2
+FEM	/home/victor/Documentos/Programas C++/MEF - UFCA/apoio.h	/^namespace FEM {$/;"	namespace	line:4
+Apoio	/home/victor/Documentos/Programas C++/MEF - UFCA/apoio.h	/^class Apoio {$/;"	class	line:7	namespace:FEM
+ponteiroNo	/home/victor/Documentos/Programas C++/MEF - UFCA/apoio.h	/^    std::unique_ptr<FEM::No<Estrutura, Tipo> > ponteiroNo;$/;"	member	line:14	class:FEM::Apoio
+apoios	/home/victor/Documentos/Programas C++/MEF - UFCA/apoio.h	/^    std::vector<int> apoios;$/;"	member	line:16	class:FEM::Apoio
+RestringirNo	/home/victor/Documentos/Programas C++/MEF - UFCA/apoio.h	/^    void RestringirNo() {(*ponteiroNo).RestringirGraus(apoios);}$/;"	function	line:18	class:FEM::Apoio	signature:()
+no	/home/victor/Documentos/Programas C++/MEF - UFCA/apoio.h	/^    FEM::No<Estrutura, Tipo> no;$/;"	member	line:21	class:FEM::Apoio
+Apoio	/home/victor/Documentos/Programas C++/MEF - UFCA/apoio.h	/^    Apoio(FEM::No<Estrutura, Tipo> &no, const std::vector<int> &apoios):$/;"	function	line:24	class:FEM::Apoio	signature:(FEM::No<Estrutura, Tipo> &no, const std::vector<int> &apoios)
+~Apoio	/home/victor/Documentos/Programas C++/MEF - UFCA/apoio.h	/^    ~Apoio () {}$/;"	function	line:28	class:FEM::Apoio	signature:()

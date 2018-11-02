@@ -1,0 +1,15 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	0	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+APOIO_H	/home/victor/Documentos/Programas C++/MEF - UFCA/apoio.h	/^#define APOIO_H$/;"	macro	line:2
+FEM	/home/victor/Documentos/Programas C++/MEF - UFCA/apoio.h	/^namespace FEM {$/;"	namespace	line:4
+Apoio	/home/victor/Documentos/Programas C++/MEF - UFCA/apoio.h	/^class Apoio {$/;"	class	line:7	namespace:FEM
+ponteiroNo	/home/victor/Documentos/Programas C++/MEF - UFCA/apoio.h	/^    std::unique_ptr<FEM::No<Estrutura, Tipo> > ponteiroNo;$/;"	member	line:14	class:FEM::Apoio
+apoios	/home/victor/Documentos/Programas C++/MEF - UFCA/apoio.h	/^    std::vector<int> apoios;$/;"	member	line:16	class:FEM::Apoio
+RestringirNo	/home/victor/Documentos/Programas C++/MEF - UFCA/apoio.h	/^    void RestringirNo() {(*ponteiroNo).RestringirGraus(apoios);}$/;"	function	line:18	class:FEM::Apoio	signature:()
+no	/home/victor/Documentos/Programas C++/MEF - UFCA/apoio.h	/^    FEM::No<Estrutura, Tipo> no;$/;"	member	line:21	class:FEM::Apoio
+Apoio	/home/victor/Documentos/Programas C++/MEF - UFCA/apoio.h	/^    Apoio(FEM::No<Estrutura, Tipo> &no, const std::vector<int> &apoios):$/;"	function	line:24	class:FEM::Apoio	signature:(FEM::No<Estrutura, Tipo> &no, const std::vector<int> &apoios)
+~Apoio	/home/victor/Documentos/Programas C++/MEF - UFCA/apoio.h	/^    ~Apoio () {}$/;"	function	line:28	class:FEM::Apoio	signature:()
