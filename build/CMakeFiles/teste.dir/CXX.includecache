@@ -1,0 +1,94 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/victor/Documentos/Programas C++/MEF - UFCA/algebra.h
+matrizes.h
+/home/victor/Documentos/Programas C++/MEF - UFCA/matrizes.h
+
+/home/victor/Documentos/Programas C++/MEF - UFCA/apoio.h
+
+/home/victor/Documentos/Programas C++/MEF - UFCA/estruturas.h
+vector
+-
+math.h
+-
+utility
+-
+
+/home/victor/Documentos/Programas C++/MEF - UFCA/geometrias.h
+vector
+-
+boost/ptr_container/ptr_vector.hpp
+-
+ponto.h
+/home/victor/Documentos/Programas C++/MEF - UFCA/ponto.h
+graus.h
+/home/victor/Documentos/Programas C++/MEF - UFCA/graus.h
+no.h
+/home/victor/Documentos/Programas C++/MEF - UFCA/no.h
+materiais.h
+/home/victor/Documentos/Programas C++/MEF - UFCA/materiais.h
+quadratura.h
+/home/victor/Documentos/Programas C++/MEF - UFCA/quadratura.h
+
+/home/victor/Documentos/Programas C++/MEF - UFCA/graus.h
+
+/home/victor/Documentos/Programas C++/MEF - UFCA/materiais.h
+iostream
+-
+vector
+-
+string
+-
+
+/home/victor/Documentos/Programas C++/MEF - UFCA/matrizes.h
+estruturas.h
+/home/victor/Documentos/Programas C++/MEF - UFCA/estruturas.h
+
+/home/victor/Documentos/Programas C++/MEF - UFCA/no.h
+
+/home/victor/Documentos/Programas C++/MEF - UFCA/ponto.h
+
+/home/victor/Documentos/Programas C++/MEF - UFCA/quadratura.h
+algebra.h
+/home/victor/Documentos/Programas C++/MEF - UFCA/algebra.h
+
+/home/victor/Documentos/Programas C++/MEF - UFCA/testes.cpp
+iostream
+-
+vector
+-
+math.h
+-
+utility
+-
+memory
+-
+boost/ptr_container/ptr_vector.hpp
+-
+estruturas.h
+/home/victor/Documentos/Programas C++/MEF - UFCA/estruturas.h
+matrizes.h
+/home/victor/Documentos/Programas C++/MEF - UFCA/matrizes.h
+algebra.h
+/home/victor/Documentos/Programas C++/MEF - UFCA/algebra.h
+ponto.h
+/home/victor/Documentos/Programas C++/MEF - UFCA/ponto.h
+graus.h
+/home/victor/Documentos/Programas C++/MEF - UFCA/graus.h
+no.h
+/home/victor/Documentos/Programas C++/MEF - UFCA/no.h
+materiais.h
+/home/victor/Documentos/Programas C++/MEF - UFCA/materiais.h
+apoio.h
+/home/victor/Documentos/Programas C++/MEF - UFCA/apoio.h
+quadratura.h
+/home/victor/Documentos/Programas C++/MEF - UFCA/quadratura.h
+geometrias.h
+/home/victor/Documentos/Programas C++/MEF - UFCA/geometrias.h
+

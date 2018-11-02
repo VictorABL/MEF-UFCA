@@ -1,0 +1,7 @@
+/home/victor/Documentos/Programas C++/MEF - UFCA/build/CMakeFiles/install/strip.dir
+/home/victor/Documentos/Programas C++/MEF - UFCA/build/CMakeFiles/edit_cache.dir
+/home/victor/Documentos/Programas C++/MEF - UFCA/build/CMakeFiles/teste.dir
+/home/victor/Documentos/Programas C++/MEF - UFCA/build/CMakeFiles/list_install_components.dir
+/home/victor/Documentos/Programas C++/MEF - UFCA/build/CMakeFiles/install/local.dir
+/home/victor/Documentos/Programas C++/MEF - UFCA/build/CMakeFiles/rebuild_cache.dir
+/home/victor/Documentos/Programas C++/MEF - UFCA/build/CMakeFiles/install.dir
