@@ -17,15 +17,22 @@ private:
     std::shared_ptr< FEM::No<Estrutura, Tipo> > ponteiro;
     std::vector<int> apoios;
 
-    void RestringirNo() {ponteiro->RestringirGraus(apoios);}
-
 public:
 
     // Construtor:
-    Apoio(FEM::No<Estrutura, Tipo> &nos, const std::vector<int> &apoio):
-    ponteiro(&nos), apoios(apoio) {RestringirNo();}
+    Apoio(FEM::No<Estrutura, Tipo> &nos, const std::vector<int> &apoio)
+          : ponteiro(&nos),
+            apoios(apoio)
+            {RestringirNo();}
 
+    // Destrutor:
     ~Apoio () {}
+
+private:
+
+    // Função de restrição do nó:
+    void RestringirNo() {ponteiro->RestringirGraus(apoios);}
+
 };
 }
 
