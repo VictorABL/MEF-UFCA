@@ -24,7 +24,9 @@ T ProdutoEscalar(FEM::EstruturaVetor<T> &vetor_a, FEM::EstruturaVetor<T> &vetor_
 
 // PRODUTO MATRIZ SIMÉTRICA CRS POR VETOR:
 template<template<class T> class Estrutura, class Tipo>
-FEM::EstruturaVetor<Tipo> ProdutoCRSporVetor(FEM::Matriz<Estrutura, Tipo> &matriz_a,FEM::EstruturaVetor<Tipo> &vetor_a) {
+FEM::EstruturaVetor<Tipo> ProdutoCRSporVetor(const FEM::Matriz<Estrutura, Tipo> &matriz_a,
+                                             const FEM::EstruturaVetor<Tipo> &vetor_a) {
+
     // Função que retorna o vetor produto da multiplicação de uma matriz CRS e um vetor
     // essa operação foi separada devido à diferença de implementação do algoritmo.
     auto vetor_b = matriz_a.GetEstruturaDaMatriz().MultiplicarPorVetor(vetor_a);
