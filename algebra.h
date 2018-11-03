@@ -12,7 +12,8 @@ namespace FEM {
 
 // PRODUTO ESCALAR:
 template<class T>
-T ProdutoEscalar(FEM::EstruturaVetor<T> &vetor_a, FEM::EstruturaVetor<T> &vetor_b) {
+T ProdutoEscalar(const FEM::EstruturaVetor<T> &vetor_a, const FEM::EstruturaVetor<T> &vetor_b) {
+
     // Retorna o produto escalar entre dois vetores.
     T escalar;
 
