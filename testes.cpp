@@ -17,6 +17,11 @@
 #include "quadratura.h"
 #include "geometrias.h"
 
+#define EXPECT_EQUAL(test, expect) equalityTest( test, expect, \
+                                                #test, #expect, \
+                                                __FILE__, __LINE__)
+
+
 // Imprime a matriz na tela:
 template<template<class Ta>class Est, class T>
 void Imprimir(const FEM::Matriz<Est, T> &matriz_a) {
