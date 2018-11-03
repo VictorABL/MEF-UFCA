@@ -6,13 +6,25 @@
 
 #IncludeRegexTransform: 
 
-/home/victor/Documentos/Programas C++/MEF - UFCA/algebra.h
+../algebra/algebra.h
+crs.h
+../algebra/crs.h
+generica.h
+../algebra/generica.h
+simetrica.h
+../algebra/simetrica.h
+vetor.h
+../algebra/vetor.h
 matrizes.h
-/home/victor/Documentos/Programas C++/MEF - UFCA/matrizes.h
+../algebra/matrizes.h
 
-/home/victor/Documentos/Programas C++/MEF - UFCA/apoio.h
+../apoio/apoio.h
+no.h
+../apoio/no.h
+graus.h
+../apoio/graus.h
 
-/home/victor/Documentos/Programas C++/MEF - UFCA/estruturas.h
+../estrutura/crs.h
 vector
 -
 math.h
@@ -20,43 +32,111 @@ math.h
 utility
 -
 
-/home/victor/Documentos/Programas C++/MEF - UFCA/geometrias.h
+../estrutura/generica.h
+vector
+-
+math.h
+-
+utility
+-
+
+../estrutura/simetrica.h
+vector
+-
+math.h
+-
+utility
+-
+
+../estrutura/vetor.h
+vector
+-
+math.h
+-
+utility
+-
+
+../geometria/iso4.h
 vector
 -
 boost/ptr_container/ptr_vector.hpp
 -
-ponto.h
-/home/victor/Documentos/Programas C++/MEF - UFCA/ponto.h
+dois_d.h
+../geometria/dois_d.h
+tres_d.h
+../geometria/tres_d.h
 graus.h
-/home/victor/Documentos/Programas C++/MEF - UFCA/graus.h
+../geometria/graus.h
 no.h
-/home/victor/Documentos/Programas C++/MEF - UFCA/no.h
-materiais.h
-/home/victor/Documentos/Programas C++/MEF - UFCA/materiais.h
+../geometria/no.h
+elastico_lin.h
+../geometria/elastico_lin.h
 quadratura.h
-/home/victor/Documentos/Programas C++/MEF - UFCA/quadratura.h
+../geometria/quadratura.h
 
-/home/victor/Documentos/Programas C++/MEF - UFCA/graus.h
+../integracao/quadratura.h
+algebra.h
+../integracao/algebra.h
 
-/home/victor/Documentos/Programas C++/MEF - UFCA/materiais.h
-iostream
--
+../material/elastico_lin.h
 vector
 -
 string
 -
 
+../matriz/matrizes.h
+crs.h
+../matriz/crs.h
+generica.h
+../matriz/generica.h
+simetrica.h
+../matriz/simetrica.h
+vetor.h
+../matriz/vetor.h
+
+../nos/graus.h
+vector
+-
+
+../nos/no.h
+dois_d.h
+../nos/dois_d.h
+tres_d.h
+../nos/tres_d.h
+
+../ponto/dois_d.h
+
+../ponto/tres_d.h
+
+/home/victor/Documentos/Programas C++/MEF - UFCA/includes.h
+vetor.h
+/home/victor/Documentos/Programas C++/MEF - UFCA/vetor.h
+crs.h
+/home/victor/Documentos/Programas C++/MEF - UFCA/crs.h
+generica.h
+/home/victor/Documentos/Programas C++/MEF - UFCA/generica.h
+simetrica.h
+/home/victor/Documentos/Programas C++/MEF - UFCA/simetrica.h
+matrizes.h
 /home/victor/Documentos/Programas C++/MEF - UFCA/matrizes.h
-estruturas.h
-/home/victor/Documentos/Programas C++/MEF - UFCA/estruturas.h
-
-/home/victor/Documentos/Programas C++/MEF - UFCA/no.h
-
-/home/victor/Documentos/Programas C++/MEF - UFCA/ponto.h
-
-/home/victor/Documentos/Programas C++/MEF - UFCA/quadratura.h
 algebra.h
 /home/victor/Documentos/Programas C++/MEF - UFCA/algebra.h
+dois_d.h
+/home/victor/Documentos/Programas C++/MEF - UFCA/dois_d.h
+tres_d.h
+/home/victor/Documentos/Programas C++/MEF - UFCA/tres_d.h
+graus.h
+/home/victor/Documentos/Programas C++/MEF - UFCA/graus.h
+no.h
+/home/victor/Documentos/Programas C++/MEF - UFCA/no.h
+elastico_lin.h
+/home/victor/Documentos/Programas C++/MEF - UFCA/elastico_lin.h
+apoio.h
+/home/victor/Documentos/Programas C++/MEF - UFCA/apoio.h
+quadratura.h
+/home/victor/Documentos/Programas C++/MEF - UFCA/quadratura.h
+iso4.h
+/home/victor/Documentos/Programas C++/MEF - UFCA/iso4.h
 
 /home/victor/Documentos/Programas C++/MEF - UFCA/testes.cpp
 iostream
@@ -71,24 +151,6 @@ memory
 -
 boost/ptr_container/ptr_vector.hpp
 -
-estruturas.h
-/home/victor/Documentos/Programas C++/MEF - UFCA/estruturas.h
-matrizes.h
-/home/victor/Documentos/Programas C++/MEF - UFCA/matrizes.h
-algebra.h
-/home/victor/Documentos/Programas C++/MEF - UFCA/algebra.h
-ponto.h
-/home/victor/Documentos/Programas C++/MEF - UFCA/ponto.h
-graus.h
-/home/victor/Documentos/Programas C++/MEF - UFCA/graus.h
-no.h
-/home/victor/Documentos/Programas C++/MEF - UFCA/no.h
-materiais.h
-/home/victor/Documentos/Programas C++/MEF - UFCA/materiais.h
-apoio.h
-/home/victor/Documentos/Programas C++/MEF - UFCA/apoio.h
-quadratura.h
-/home/victor/Documentos/Programas C++/MEF - UFCA/quadratura.h
-geometrias.h
-/home/victor/Documentos/Programas C++/MEF - UFCA/geometrias.h
+includes.h
+/home/victor/Documentos/Programas C++/MEF - UFCA/includes.h
 

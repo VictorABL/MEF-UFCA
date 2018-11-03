@@ -2,6 +2,8 @@
 #ifndef GRAUS_H
 #define GRAUS_H
 
+#include<vector>
+
 // Classe de definição dos graus de liberdade da estrutura.
 
 namespace FEM {

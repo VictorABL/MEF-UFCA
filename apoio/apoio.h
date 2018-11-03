@@ -1,6 +1,9 @@
 #ifndef APOIO_H
 #define APOIO_H
 
+#include "no.h"
+#include "graus.h"
+
 namespace FEM {
 
 template<template<class B> class Estrutura, class Tipo = double>

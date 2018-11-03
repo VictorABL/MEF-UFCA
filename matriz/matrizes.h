@@ -3,7 +3,10 @@
 #define MATRIZES_H
 
 
-#include "estruturas.h"
+#include "crs.h"
+#include "generica.h"
+#include "simetrica.h"
+#include "vetor.h"
 
 // Documentação das classes de matrizes do programa.
 

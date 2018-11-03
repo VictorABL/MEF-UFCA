@@ -1,9 +1,7 @@
 
-#ifndef MATERIAIS_H
-#define MATERIAIS_H
+#ifndef ELASTICO_LIN_H
+#define ELASTICO_LIN_H
 
-
-#include <iostream>
 #include <vector>
 #include <string>
 

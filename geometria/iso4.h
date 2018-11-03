@@ -5,11 +5,12 @@
 #include<vector>
 #include <boost/ptr_container/ptr_vector.hpp>
 
-#include "ponto.h"
+#include "dois_d.h"
+#include "tres_d.h"
 #include "graus.h"
 #include "no.h"
 
-#include "materiais.h"
+#include "elastico_lin.h"
 #include "quadratura.h"
 
 // Documentação dos elementos componentes das estruturas,

@@ -6,16 +6,7 @@
 #include <memory>
 #include <boost/ptr_container/ptr_vector.hpp>
 
-#include "estruturas.h"
-#include "matrizes.h"
-#include "algebra.h"
-#include "ponto.h"
-#include "graus.h"
-#include "no.h"
-#include "materiais.h"
-#include "apoio.h"
-#include "quadratura.h"
-#include "geometrias.h"
+#include "includes.h"
 
 #define EXPECT_EQUAL(test, expect) equalityTest( test, expect, \
                                                 #test, #expect, \

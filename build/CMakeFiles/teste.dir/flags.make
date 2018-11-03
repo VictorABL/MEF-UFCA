@@ -6,5 +6,5 @@ CXX_FLAGS =
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = 
+CXX_INCLUDES = -I"/home/victor/Documentos/Programas C++/MEF - UFCA/algebra" -I"/home/victor/Documentos/Programas C++/MEF - UFCA/apoio" -I"/home/victor/Documentos/Programas C++/MEF - UFCA/estrutura" -I"/home/victor/Documentos/Programas C++/MEF - UFCA/geometria" -I"/home/victor/Documentos/Programas C++/MEF - UFCA/integracao" -I"/home/victor/Documentos/Programas C++/MEF - UFCA/material" -I"/home/victor/Documentos/Programas C++/MEF - UFCA/matriz" -I"/home/victor/Documentos/Programas C++/MEF - UFCA/nos" -I"/home/victor/Documentos/Programas C++/MEF - UFCA/ponto" 
 

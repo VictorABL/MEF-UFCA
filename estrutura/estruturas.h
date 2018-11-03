@@ -19,8 +19,8 @@ template<class T>
 
 class EstruturaVetor {
 
-    // Implementação de uma estrutura de um vetor de qualquer tipo
     // primitivo de dado.
+    // Implementação de uma estrutura de um vetor de qualquer tipo
 
 private:
     // Definição do container de elementos e do tamanho do objeto:

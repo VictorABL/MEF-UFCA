@@ -2,7 +2,12 @@
 #ifndef ALGEBRA_H
 #define ALGEBRA_H
 
+#include "crs.h"
+#include "generica.h"
+#include "simetrica.h"
+#include "vetor.h"
 #include "matrizes.h"
+
 
 // Documentação para a definição das operações genéricas de álgebra linear e outras
 // operações entre os elementos, tais como matrizes, vetores, etc..

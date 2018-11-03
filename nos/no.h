@@ -2,6 +2,9 @@
 #ifndef NO_H
 #define NO_H
 
+#include "dois_d.h"
+#include "tres_d.h"
+
 namespace FEM {
 
 template<template<class T> class Estrutura, class Tipo = double>
