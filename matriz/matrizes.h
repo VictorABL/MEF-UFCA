@@ -21,7 +21,7 @@ class Matriz {
 
 public:
 
-    typedef typename Matriz<FEM::EstruturaMatrizGenerica, Tipo> matriz_generica;
+    typedef  Matriz<FEM::EstruturaMatrizGenerica, Tipo> matriz_generica;
 
 
 private:
@@ -127,7 +127,7 @@ class Matriz<FEM::EstruturaMatrizSimetricaCRS, Tipo> {
 
 public:
 
-    typedef typename Matriz<FEM::EstruturaMatrizGenerica, Tipo> matriz_generica;
+    typedef Matriz<FEM::EstruturaMatrizGenerica, Tipo> matriz_generica;
 
 private:
 
