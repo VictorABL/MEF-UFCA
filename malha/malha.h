@@ -102,6 +102,15 @@ private:
         }
     }
 
+    void Gerar() {
+
+        // Função de geração da malha, criandos os pontos
+        // e as faces:
+
+        CriarPontos();
+        CriarElementos();
+    }
+
 public:
 
     // Construtor:
@@ -119,14 +128,6 @@ public:
     // Destrutor:
     ~Malha () {}
 
-    void Gerar() {
-
-        // Função de geração da malha, criandos os pontos
-        // e as faces:
-
-        CriarPontos();
-        CriarElementos();
-    }
 
     // Retorna o vetor de pontos:
     ptrVetor_pontos &GetPontos() {return pontos;}
