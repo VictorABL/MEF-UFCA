@@ -24,6 +24,20 @@ no.h
 graus.h
 ../apoio/graus.h
 
+../container/lista_ponteiro.h
+list
+-
+boost/iterator/indirect_iterator.hpp
+-
+
+../container/vetor_ponteiro.h
+vector
+-
+memory
+-
+boost/iterator/indirect_iterator.hpp
+-
+
 ../estrutura/crs.h
 vector
 -
@@ -59,7 +73,7 @@ utility
 ../geometria/iso4.h
 vector
 -
-boost/ptr_container/ptr_vector.hpp
+boost/iterator/indirect_iterator.hpp
 -
 dois_d.h
 ../geometria/dois_d.h
@@ -77,6 +91,36 @@ quadratura.h
 ../integracao/quadratura.h
 algebra.h
 ../integracao/algebra.h
+
+../malha/face.h
+lista_ponteiro.h
+../malha/lista_ponteiro.h
+vetor_ponteiro.h
+../malha/vetor_ponteiro.h
+dois_d.h
+../malha/dois_d.h
+tres_d.h
+../malha/tres_d.h
+no.h
+../malha/no.h
+
+../malha/malha.h
+memory
+-
+math.h
+-
+boost/ptr_container/ptr_vector.hpp
+-
+face.h
+../malha/face.h
+dois_d.h
+../malha/dois_d.h
+tres_d.h
+../malha/tres_d.h
+lista_ponteiro.h
+../malha/lista_ponteiro.h
+vetor_ponteiro.h
+../malha/vetor_ponteiro.h
 
 ../material/elastico_lin.h
 vector
@@ -103,12 +147,22 @@ dois_d.h
 ../nos/dois_d.h
 tres_d.h
 ../nos/tres_d.h
+graus.h
+../nos/graus.h
 
 ../ponto/dois_d.h
 
 ../ponto/tres_d.h
 
+/home/victor/Documentos/Programas C++/MEF - UFCA/analise.h
+malha.h
+/home/victor/Documentos/Programas C++/MEF - UFCA/malha.h
+
 /home/victor/Documentos/Programas C++/MEF - UFCA/includes.h
+lista_ponteiro.h
+/home/victor/Documentos/Programas C++/MEF - UFCA/lista_ponteiro.h
+vetor_ponteiro.h
+/home/victor/Documentos/Programas C++/MEF - UFCA/vetor_ponteiro.h
 vetor.h
 /home/victor/Documentos/Programas C++/MEF - UFCA/vetor.h
 crs.h
@@ -125,6 +179,8 @@ dois_d.h
 /home/victor/Documentos/Programas C++/MEF - UFCA/dois_d.h
 tres_d.h
 /home/victor/Documentos/Programas C++/MEF - UFCA/tres_d.h
+face.h
+/home/victor/Documentos/Programas C++/MEF - UFCA/face.h
 graus.h
 /home/victor/Documentos/Programas C++/MEF - UFCA/graus.h
 no.h
@@ -137,6 +193,10 @@ quadratura.h
 /home/victor/Documentos/Programas C++/MEF - UFCA/quadratura.h
 iso4.h
 /home/victor/Documentos/Programas C++/MEF - UFCA/iso4.h
+malha.h
+/home/victor/Documentos/Programas C++/MEF - UFCA/malha.h
+analise.h
+/home/victor/Documentos/Programas C++/MEF - UFCA/analise.h
 
 /home/victor/Documentos/Programas C++/MEF - UFCA/testes.cpp
 iostream

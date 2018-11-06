@@ -4,6 +4,7 @@
 
 #include "dois_d.h"
 #include "tres_d.h"
+#include "graus.h"
 
 namespace FEM {
 

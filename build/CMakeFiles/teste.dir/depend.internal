@@ -4,17 +4,22 @@
 CMakeFiles/teste.dir/testes.cpp.o
  ../algebra/algebra.h
  ../apoio/apoio.h
+ ../container/lista_ponteiro.h
+ ../container/vetor_ponteiro.h
  ../estrutura/crs.h
  ../estrutura/generica.h
  ../estrutura/simetrica.h
  ../estrutura/vetor.h
  ../geometria/iso4.h
  ../integracao/quadratura.h
+ ../malha/face.h
+ ../malha/malha.h
  ../material/elastico_lin.h
  ../matriz/matrizes.h
  ../nos/graus.h
  ../nos/no.h
  ../ponto/dois_d.h
  ../ponto/tres_d.h
+ /home/victor/Documentos/Programas C++/MEF - UFCA/analise.h
  /home/victor/Documentos/Programas C++/MEF - UFCA/includes.h
  /home/victor/Documentos/Programas C++/MEF - UFCA/testes.cpp

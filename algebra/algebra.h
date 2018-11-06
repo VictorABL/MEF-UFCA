@@ -15,6 +15,7 @@
 
 namespace FEM {
 
+
 // PRODUTO ESCALAR:
 template<class T>
 T ProdutoEscalar(const FEM::EstruturaVetor<T> &vetor_a, const FEM::EstruturaVetor<T> &vetor_b) {

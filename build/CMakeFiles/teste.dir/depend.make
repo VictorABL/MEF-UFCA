@@ -3,18 +3,23 @@
 
 CMakeFiles/teste.dir/testes.cpp.o: ../algebra/algebra.h
 CMakeFiles/teste.dir/testes.cpp.o: ../apoio/apoio.h
+CMakeFiles/teste.dir/testes.cpp.o: ../container/lista_ponteiro.h
+CMakeFiles/teste.dir/testes.cpp.o: ../container/vetor_ponteiro.h
 CMakeFiles/teste.dir/testes.cpp.o: ../estrutura/crs.h
 CMakeFiles/teste.dir/testes.cpp.o: ../estrutura/generica.h
 CMakeFiles/teste.dir/testes.cpp.o: ../estrutura/simetrica.h
 CMakeFiles/teste.dir/testes.cpp.o: ../estrutura/vetor.h
 CMakeFiles/teste.dir/testes.cpp.o: ../geometria/iso4.h
 CMakeFiles/teste.dir/testes.cpp.o: ../integracao/quadratura.h
+CMakeFiles/teste.dir/testes.cpp.o: ../malha/face.h
+CMakeFiles/teste.dir/testes.cpp.o: ../malha/malha.h
 CMakeFiles/teste.dir/testes.cpp.o: ../material/elastico_lin.h
 CMakeFiles/teste.dir/testes.cpp.o: ../matriz/matrizes.h
 CMakeFiles/teste.dir/testes.cpp.o: ../nos/graus.h
 CMakeFiles/teste.dir/testes.cpp.o: ../nos/no.h
 CMakeFiles/teste.dir/testes.cpp.o: ../ponto/dois_d.h
 CMakeFiles/teste.dir/testes.cpp.o: ../ponto/tres_d.h
+CMakeFiles/teste.dir/testes.cpp.o: ../analise.h
 CMakeFiles/teste.dir/testes.cpp.o: ../includes.h
 CMakeFiles/teste.dir/testes.cpp.o: ../testes.cpp
 

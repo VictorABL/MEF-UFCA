@@ -22,6 +22,7 @@ private:
 public:
     // Inicialização da classe de maneira parametrizada (construtor).
     EstruturaVetor(size_t tamanho, T inicializar = 0)
+
                   : elementos(tamanho, inicializar),
                     tamanho(tamanho) {}
 

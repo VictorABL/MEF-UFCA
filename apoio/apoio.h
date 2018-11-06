@@ -11,20 +11,23 @@ class Apoio {
 
     // Implementação da classe apoio, referencia os nós
     // com graus impedidos.
+
+public:
+
+    typedef typename std::shared_ptr< FEM::No<Estrutura, Tipo> > shared_ptr;
+
 private:
 
     // Ponteiro para o nó impedido:
+    shared_ptr ponteiro;
     // Vetor dos graus impedidos:
-    // FEM::No<Estrutura, Tipo> *nos;
-
-    std::shared_ptr< FEM::No<Estrutura, Tipo> > ponteiro;
     std::vector<int> apoios;
 
 public:
 
     // Construtor:
-    Apoio(FEM::No<Estrutura, Tipo> &nos, const std::vector<int> &apoio)
-          : ponteiro(&nos),
+    Apoio(const shared_ptr &no, const std::vector<int> &apoio)
+          : ponteiro(no),
             apoios(apoio)
             {RestringirNo();}
 

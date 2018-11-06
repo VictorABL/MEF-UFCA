@@ -10,12 +10,19 @@
 
 namespace FEM {
 
-template<template<class B> class TipoDeElemento, template<class B> class Estrutura, class T>
+template<template< template<class A> class B, class C> class TipoDeElemento,
+         template<class D> class Material,
+         template<class E> class Estrutura, class T>
 class QuadraturaDeGauss {
 
     // Classe abstrata para a integração dos componentes dos elementos,
     // analisa a dimensão, e inicia a função de integração com base em
     // tal análise.
+
+
+public:
+
+    typedef typename FEM::Matriz<Estrutura, T> matriz;
 
 private:
     static std::vector<double> xi1;
@@ -33,12 +40,13 @@ public:
 
     QuadraturaDeGauss() {}
 
-    static FEM::Matriz<Estrutura> Integral(const TipoDeElemento<T> &Elemento, const int numeroDePontos) {
+    static matriz Integral(const TipoDeElemento<Material, T> &Elemento,
+                                           const int numeroDePontos) {
 
         // Inicialização da matriz de saída:
-        FEM::Matriz<Estrutura, T> K;
+        matriz K;
 
-        // Análise da dimensão do elemento:
+        // Análise da dimensão do TipoDeElemento<Material, T>:
         switch(Elemento.Dimensao()) {
             case 1:
                 K = IntegralDimensao1(Elemento, numeroDePontos);
@@ -50,7 +58,9 @@ public:
         return std::move(K);
     }
 
-    static auto IntegralDimensao1(const TipoDeElemento<T> &Elemento,
+private:
+
+    static auto IntegralDimensao1(const TipoDeElemento<Material, T> &Elemento,
     const int numeroDePontos) -> decltype(Elemento.ProdutoTriplo(xi[numeroDePontos][0])) {
 
         auto K = Elemento.ProdutoTriplo(xi[numeroDePontos - 1][0]);
@@ -66,8 +76,8 @@ public:
     }
 
 
-    static auto IntegralDimensao2(const TipoDeElemento<T> &Elemento,
-    const int numeroDePontos) -> decltype(Elemento.ProdutoTriplo(xi[numeroDePontos][0], xi[numeroDePontos][0])) {
+    static auto IntegralDimensao2(const TipoDeElemento<Material, T> &Elemento,const int numeroDePontos)
+    -> decltype(Elemento.ProdutoTriplo(xi[numeroDePontos][0], xi[numeroDePontos][0])) {
 
         auto K = Elemento.ProdutoTriplo(xi[numeroDePontos - 1][0], xi[numeroDePontos - 1][0]);
 
@@ -86,12 +96,11 @@ public:
         return std::move(K);
     }
 
-    static auto IntegralDimensao3(const TipoDeElemento<T> &Elemento,
-    const int numeroDePontos) -> decltype(Elemento.ProdutoTriplo(xi[numeroDePontos][0],
-    xi[numeroDePontos][0], xi[numeroDePontos][0])) {
+    static auto IntegralDimensao3(const TipoDeElemento<Material, T> &Elemento, const int numeroDePontos)
+    -> decltype(Elemento.ProdutoTriplo(xi[numeroDePontos][0], xi[numeroDePontos][0], xi[numeroDePontos][0])) {
 
         auto K = Elemento.ProdutoTriplo(xi[numeroDePontos - 1][0],
-        xi[numeroDePontos - 1][0], xi[numeroDePontos - 1][0]);
+                                        xi[numeroDePontos - 1][0], xi[numeroDePontos - 1][0]);
 
         K *= weight[numeroDePontos - 1][0]* weight[numeroDePontos - 1][0] * weight[numeroDePontos - 1][0];
 
@@ -111,35 +120,56 @@ public:
     }
 };
 
-template<template<class B> class TipoDeElemento, template<class B> class Estrutura, class T>
-std::vector<double> FEM::QuadraturaDeGauss<TipoDeElemento, Estrutura, T>::xi1= {0};
 
-template<template<class B> class TipoDeElemento, template<class B> class Estrutura, class T>
-std::vector<double> FEM::QuadraturaDeGauss<TipoDeElemento, Estrutura, T>::xi2= {-1/sqrt(3), 1/sqrt(3)};
+template<template<template<class A>class B, class C> class TipoDeElemento,
+         template<class D> class Material,
+         template<class E> class Estrutura, class T>
+std::vector<double> FEM::QuadraturaDeGauss<TipoDeElemento, Material, Estrutura, T>::xi1 = {0};
 
-template<template<class B> class TipoDeElemento, template<class B> class Estrutura, class T>
-std::vector<double> FEM::QuadraturaDeGauss<TipoDeElemento, Estrutura, T>::xi3= {0};
+template<template<template<class A>class B, class C> class TipoDeElemento,
+         template<class D> class Material,
+         template<class E> class Estrutura, class T>
+std::vector<double> FEM::QuadraturaDeGauss<TipoDeElemento, Material, Estrutura, T>::xi2 = {-1/sqrt(3), 1/sqrt(3)};
 
-template<template<class B> class TipoDeElemento, template<class B> class Estrutura, class T>
-std::vector<double> FEM::QuadraturaDeGauss<TipoDeElemento, Estrutura, T>::xi4= {0};
+template<template<template<class A>class B, class C> class TipoDeElemento,
+         template<class D> class Material,
+         template<class E> class Estrutura, class T>
+std::vector<double> FEM::QuadraturaDeGauss<TipoDeElemento, Material, Estrutura, T>::xi3 = {0};
 
-template<template<class B> class TipoDeElemento, template<class B> class Estrutura, class T>
-std::vector<std::vector<double> > FEM::QuadraturaDeGauss<TipoDeElemento, Estrutura, T>::xi= {xi1, xi2, xi3, xi4};
+template<template<template<class A>class B, class C> class TipoDeElemento,
+         template<class D> class Material,
+         template<class E> class Estrutura, class T>
+std::vector<double> FEM::QuadraturaDeGauss<TipoDeElemento, Material, Estrutura, T>::xi4 = {0};
 
-template<template<class B> class TipoDeElemento, template<class B> class Estrutura, class T>
-std::vector<double> FEM::QuadraturaDeGauss<TipoDeElemento, Estrutura, T>::weight1= {2};
+template<template<template<class A>class B, class C> class TipoDeElemento,
+         template<class D> class Material,
+         template<class E> class Estrutura, class T>
+std::vector<std::vector<double> > FEM::QuadraturaDeGauss<TipoDeElemento, Material, Estrutura, T>::xi = {xi1, xi2, xi3, xi4};
 
-template<template<class B> class TipoDeElemento, template<class B> class Estrutura, class T>
-std::vector<double> FEM::QuadraturaDeGauss<TipoDeElemento, Estrutura, T>::weight2= {1, 1};
+template<template<template<class A>class B, class C> class TipoDeElemento,
+         template<class D> class Material,
+         template<class E> class Estrutura, class T>
+std::vector<double> FEM::QuadraturaDeGauss<TipoDeElemento, Material, Estrutura, T>::weight1 = {2};
 
-template<template<class B> class TipoDeElemento, template<class B> class Estrutura, class T>
-std::vector<double> FEM::QuadraturaDeGauss<TipoDeElemento, Estrutura, T>::weight3= {0};
+template<template<template<class A>class B, class C> class TipoDeElemento,
+         template<class D> class Material,
+         template<class E> class Estrutura, class T>
+std::vector<double> FEM::QuadraturaDeGauss<TipoDeElemento, Material, Estrutura, T>::weight2 = {1, 1};
 
-template<template<class B> class TipoDeElemento, template<class B> class Estrutura, class T>
-std::vector<double> FEM::QuadraturaDeGauss<TipoDeElemento, Estrutura, T>::weight4= {0};
+template<template<template<class A>class B, class C> class TipoDeElemento,
+         template<class D> class Material,
+         template<class E> class Estrutura, class T>
+std::vector<double> FEM::QuadraturaDeGauss<TipoDeElemento, Material, Estrutura, T>::weight3 = {0};
 
-template<template<class B> class TipoDeElemento, template<class B> class Estrutura, class T>
-std::vector<std::vector<double> > FEM::QuadraturaDeGauss<TipoDeElemento, Estrutura, T>::weight= {weight1, weight2, weight3, weight4};
+template<template<template<class A>class B, class C> class TipoDeElemento,
+         template<class D> class Material,
+         template<class E> class Estrutura, class T>
+std::vector<double> FEM::QuadraturaDeGauss<TipoDeElemento, Material, Estrutura, T>::weight4 = {0};
+
+template<template<template<class A>class B, class C> class TipoDeElemento,
+         template<class D> class Material,
+         template<class E> class Estrutura, class T>
+std::vector<std::vector<double> > FEM::QuadraturaDeGauss<TipoDeElemento, Material, Estrutura, T>::weight = {weight1, weight2, weight3, weight4};
 
 }
 

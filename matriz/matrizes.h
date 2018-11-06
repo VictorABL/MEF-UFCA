@@ -19,10 +19,17 @@ class Matriz {
     // Classe de tipo padrão de matriz, a qual pode ser definida por várias
     // estruturas diferentes, como a própria genérica, simétrica, etc...
 
+public:
+
+    typedef typename Matriz<FEM::EstruturaMatrizGenerica, Tipo> matriz_generica;
+
+
 private:
+
     Estrutura<Tipo> dadosDaMatriz;
 
 public:
+
     // Inicialização da classe matriz:
     Matriz(const size_t linhas, const size_t colunas): dadosDaMatriz(linhas, colunas) {}
 
@@ -65,9 +72,9 @@ public:
 
     // Operação de soma entre matrizes:
     template<template<class B> class Estrutura2, class Tipo2>
-    Matriz<FEM::EstruturaMatrizGenerica, Tipo> operator+ (const Matriz<Estrutura2, Tipo2> &matriz_a) {
+    matriz_generica operator+ (const Matriz<Estrutura2, Tipo2> &matriz_a) {
 
-        Matriz<FEM::EstruturaMatrizGenerica, Tipo> matriz_c(NumeroDeLinhas(), NumeroDeColunas());
+        matriz_generica matriz_c(NumeroDeLinhas(), NumeroDeColunas());
 
         for(size_t linha = 0; linha < NumeroDeLinhas(); linha++) {
             for(size_t coluna = 0; coluna < NumeroDeColunas(); coluna++)
@@ -81,10 +88,10 @@ public:
 
     // Operação de multiplicação entre matrizes:
     template<template<class C> class Estrutura2, class T2>
-    Matriz<FEM::EstruturaMatrizGenerica, Tipo> operator*(const Matriz<Estrutura2, T2> &matriz_a) {
+    matriz_generica operator*(const Matriz<Estrutura2, T2> &matriz_a) {
         // Operação de multiplicação genérica para qualquer objeto matriz instanciado em
         // diferentes estruturas.
-        Matriz<FEM::EstruturaMatrizGenerica, Tipo> matriz_c(NumeroDeLinhas(), matriz_a.NumeroDeColunas());
+        matriz_generica matriz_c(NumeroDeLinhas(), matriz_a.NumeroDeColunas());
 
         for(size_t linha = 0; linha < matriz_c.NumeroDeLinhas(); linha++) {
             for(size_t coluna = 0; coluna < matriz_c.NumeroDeColunas(); coluna++) {
@@ -118,15 +125,22 @@ class Matriz<FEM::EstruturaMatrizSimetricaCRS, Tipo> {
     // Classe de tipo padrão de matriz, a qual pode ser definida por várias
     // estruturas diferentes, como a própria genérica, CRS, etc...
 
+public:
+
+    typedef typename Matriz<FEM::EstruturaMatrizGenerica, Tipo> matriz_generica;
+
 private:
+
     FEM::EstruturaMatrizSimetricaCRS<Tipo> dadosDaMatriz;
 
 public:
 
     // Inicialização da classe matriz:
     Matriz(const std::vector<Tipo> &elementos, const std::vector<size_t> &posicaoColunas,
-    const std::vector<size_t> &enderecoDiagonais,const size_t dimensao = 1):
-    dadosDaMatriz(elementos, posicaoColunas, enderecoDiagonais, dimensao) {}
+                    const std::vector<size_t> &enderecoDiagonais,const size_t dimensao = 1)
+
+          : dadosDaMatriz(elementos, posicaoColunas,
+                          enderecoDiagonais, dimensao) {}
 
     // Sobrecarga do operador () para indexação dos elementos:
     // Para o caso de objetos constantes:
@@ -150,9 +164,9 @@ public:
 
     // Operação de soma entre matrizes:
     template<template<class B> class Estrutura2, class Tipo2>
-    Matriz<FEM::EstruturaMatrizGenerica, Tipo> operator+ (const Matriz<Estrutura2, Tipo2> &matriz_a) {
+    matriz_generica operator+ (const Matriz<Estrutura2, Tipo2> &matriz_a) {
 
-        Matriz<FEM::EstruturaMatrizGenerica, Tipo> matriz_c(NumeroDeLinhas(), NumeroDeColunas());
+        matriz_generica matriz_c(NumeroDeLinhas(), NumeroDeColunas());
 
         for(size_t linha = 0; linha < NumeroDeLinhas(); linha++) {
             for(size_t coluna = 0; coluna < NumeroDeColunas(); coluna++)
@@ -165,10 +179,10 @@ public:
 
     // Operação de multiplicação entre matrizes:
     template<template<class C> class Estrutura2, class T2>
-    Matriz<FEM::EstruturaMatrizGenerica, Tipo> operator*(const Matriz<Estrutura2, T2> &matriz_a) {
+    matriz_generica operator*(const Matriz<Estrutura2, T2> &matriz_a) {
         // Operação de multiplicação genérica para qualquer objeto matriz instanciado em
         // diferentes estruturas.
-        Matriz<FEM::EstruturaMatrizGenerica, Tipo> matriz_c(NumeroDeLinhas(), matriz_a.NumeroDeColunas());
+        matriz_generica matriz_c(NumeroDeLinhas(), matriz_a.NumeroDeColunas());
 
         for(size_t linha = 0; linha < matriz_c.NumeroDeLinhas(); linha++) {
             for(size_t coluna = 0; coluna < matriz_c.NumeroDeColunas(); coluna++) {

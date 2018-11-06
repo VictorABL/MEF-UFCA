@@ -12,7 +12,7 @@
 namespace FEM {
 
 template<class T = double>
-class Material {
+class LinearElastico {
 private:
 
     // Componentes e características dos materiais:
@@ -22,12 +22,21 @@ private:
 public:
 
     // Construtor:
-    Material (std::string nome, T moduloElasticidade, T coeficientePoisson):
-    nome(nome), moduloElasticidade(moduloElasticidade),
-    coeficientePoisson(coeficientePoisson) {}
+    // Padrão:
+    LinearElastico ()
+                    : nome(),
+                      moduloElasticidade(),
+                      coeficientePoisson() {}
+
+    // Sobrecarregado:
+    LinearElastico (const std::string nome, const T moduloElasticidade,
+                                            const T coeficientePoisson)
+                   :nome(nome),
+                    moduloElasticidade(moduloElasticidade),
+                    coeficientePoisson(coeficientePoisson) {}
 
     // Destrutor:
-    ~Material () {}
+    ~LinearElastico () {}
 
     // Getters:
     const T ModuloElasticidade() const {return moduloElasticidade;}

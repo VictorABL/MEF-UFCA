@@ -45,6 +45,7 @@ public:
 }
     // usada para a restrição será o inteiro -1
     void RestringirGrausDeLiberdade(const std::vector<Tipo> &vetorDeRestricao) {
+
         // Função que restringe o grau de elemento, a notação
         for(size_t iterador = 0; iterador < grausDeLiberdade.size(); iterador++)
             grausDeLiberdade[vetorDeRestricao[iterador]] = -1;

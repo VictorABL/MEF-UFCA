@@ -26,6 +26,7 @@ namespace FEM {
 
         // Construtor:
         EstruturaMatrizSimetricaCheia(size_t linhas = 1, size_t colunas = 1)
+
                                      : elementos(((2 + linhas) * linhas)/2, 0),
                                      numeroDeLinhas(linhas),
                                      numeroDeColunas(colunas) {}

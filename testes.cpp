@@ -7,7 +7,6 @@
 #include <boost/ptr_container/ptr_vector.hpp>
 
 #include "includes.h"
-
 #define EXPECT_EQUAL(test, expect) equalityTest( test, expect, \
                                                 #test, #expect, \
                                                 __FILE__, __LINE__)
@@ -27,44 +26,40 @@ void Imprimir(const FEM::Matriz<Est, T> &matriz_a) {
 
 int main() {
 
-    // Criação dos Pontos:
-    FEM::Ponto2D<> p1({1,10.0});
-    FEM::Ponto2D<> p2({-1.0,-1.0});
-    FEM::Ponto2D<> p3({-1.0,1.0});
-    FEM::Ponto2D<> p4({-1.0,3.0});
 
-    // Criação dos nós:
-    boost::ptr_vector<FEM::No<FEM::Ponto2D, double> > vetor;
-    vetor.push_back(new FEM::No<FEM::Ponto2D, double>(p1, 3));
-    vetor.push_back(new FEM::No<FEM::Ponto2D, double>(p2, 3));
-    vetor.push_back(new FEM::No<FEM::Ponto2D, double>(p3, 3));
-    vetor.push_back(new FEM::No<FEM::Ponto2D, double>(p4, 3));
+    FEM::Ponto2D<double> p1({1.0,1.0});
+    FEM::Ponto2D<double> p2({-1,11.0});
+    FEM::Ponto2D<double> p3({2,5.6});
+    FEM::Ponto2D<double> p4({2,3});
+    FEM::Ponto2D<double> p5({3,3});
 
+    FEM::LinearElastico<double> mat("aco", 200E9, 0.3);
 
-    double CP = 0.35, ME = 236E9, EP = 3E-3;
-    FEM::Material<> m1("aco", ME, CP);
+    typedef std::shared_ptr<FEM::No<FEM::Ponto2D, double> > shared_ptr;
+    typedef FEM::No<FEM::Ponto2D, double> ponto_2;
 
-    // Inplementação do elemento(4 nós):
-    FEM::QuadrilateroIsoparametrico<> quadrado(vetor, m1, EP);
-    auto K = quadrado.MatrizRigidezElementar();
-    // Imprimir(K);
+    // FEM::VetorPonteiro<FEM::No<FEM::Ponto2D, double> > v;
+    FEM::ListaPonteiro<FEM::No<FEM::Ponto2D, double> > l;
 
-    // Apoios:
-    std::vector<int> v = {0,2};
+    l.AdicionarFinal(shared_ptr(new FEM::No<FEM::Ponto2D, double>(p1, 3)));
+    l.AdicionarFinal(shared_ptr(new FEM::No<FEM::Ponto2D, double>(p2, 3)));
+    l.AdicionarFinal(shared_ptr(new FEM::No<FEM::Ponto2D, double>(p3, 3)));
+    l.AdicionarFinal(shared_ptr(new FEM::No<FEM::Ponto2D, double>(p4, 3)));
 
-    auto a1 = FEM::Apoio<FEM::Ponto2D, double>(vetor[0], v);
-    auto a2 = FEM::Apoio<FEM::Ponto2D, double>(vetor[2], v);
+    FEM::Face<FEM::Ponto2D, double> f1(l);
+    std::shared_ptr<FEM::Face<FEM::Ponto2D, double> > f2(new FEM::Face<FEM::Ponto2D, double>(l));
 
-    // Indexação dos graus de liberdade de cada nó:
-    using it = boost::ptr_vector< FEM::No<FEM::Ponto2D, double> >::iterator;
-    for(it i = vetor.begin(); i != vetor.end(); i++) {
-        (*i).EnumeraGrausDeLiberdade();
-    }
+    // auto e1 = FEM::QuadrilateroIsoparametrico<FEM::LinearElastico, double>(f2, mat, 3E-3);
+    // auto k = e1.MatrizRigidezElementar();
+    // Imprimir(k);
 
-    for(size_t i = 0; i < vetor.size(); i++) {
-        for(size_t j = 0; j < vetor.size() - 1; j++)
-            std::cout << vetor[i].GetVetorGrausDeLiberdade()[j] << '\n';
-    }
+    auto a = FEM::Analise<FEM::QuadrilateroIsoparametrico,FEM::LinearElastico, FEM::Ponto2D, double>(8, mat, 3E-3, 3);
+
+    std::vector<int> v = {0,1};
+    a.CriarMalha();
+    a.AdicionarApoio(0, v);
+    a.AdicionarApoio(3, v);
+    a.EnumerarGraus();
 
     return 0;
 }

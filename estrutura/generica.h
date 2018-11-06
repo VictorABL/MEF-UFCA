@@ -25,6 +25,7 @@ public:
     // Inicialização da classe (construtor) é padrão, uma vez que
     // a classe é uma abstração para a conteção de dados.
     EstruturaMatrizGenerica(const size_t linhas = 1, const size_t colunas = 1)
+
                            : elementos(linhas * colunas),
                              numeroDeLinhas(linhas),
                              numeroDeColunas(colunas) {}

@@ -3,7 +3,7 @@
 #define GEOMETRIAS_H
 
 #include<vector>
-#include <boost/ptr_container/ptr_vector.hpp>
+#include <boost/iterator/indirect_iterator.hpp>
 
 #include "dois_d.h"
 #include "tres_d.h"
@@ -19,26 +19,39 @@
 
 namespace FEM {
 
-template<class T = double>
+template<template<class B> class Material, class T = double>
 class QuadrilateroIsoparametrico {
 
     // Definição da classe de um elemento bidimensional, com
     // quatro nós (quadrilátero) e isoparamétrico.
 
+public:
+
+    typedef typename FEM::Face<FEM::Ponto2D, T> faces_no;
+
+    typedef typename FEM::QuadraturaDeGauss<QuadrilateroIsoparametrico, LinearElastico,
+                                            FEM::EstruturaMatrizSimetricaCheia, T> integracao;
+
+    typedef typename FEM::Matriz<FEM::EstruturaMatrizSimetricaCheia, T> matriz_sim;
+    typedef typename FEM::Matriz<FEM::EstruturaMatrizGenerica, T> matriz;
+
+    typedef typename FEM::ListaPonteiro<FEM::No<FEM::Ponto2D, T> > ptrLista;
+    typedef typename std::shared_ptr<faces_no> ptr_face;
+
 private:
 
     // Vetor que contem os nós dos elementos:
-    boost::ptr_vector<FEM::No<FEM::Ponto2D, T> > nosDoElemento;
+    ptr_face nosDoElemento;
     // Classe de características físicas do material.
-    FEM::Material<T> material;
+    Material<T> material;
     // Inicialização da variável da matriz característica do elemento:
-    FEM::Matriz<> matrizConstitutiva;
+    matriz matrizConstitutiva;
     T espessura;
     // Dimensão do elemento:
     int dimensao = 2;
 
     // Função de inicialização da matriz de forma do elemento:
-    FEM::Matriz<> DefinirMatrizDeForma(const T pontoX, const T pontoY) const {
+    matriz DefinirMatrizDeForma(const T pontoX, const T pontoY) const {
 
         // Definição funções de forma:
         T N1 = (1.0/4.0)*(1.0 - pontoX) * (1.0 - pontoY);
@@ -47,7 +60,7 @@ private:
         T N4 = (1.0/4.0)*(1.0 - pontoX) * (1.0 + pontoY);
 
         // Implementação na matriz:
-        FEM::Matriz<> MatrizDeForma(2,8);
+        matriz MatrizDeForma(2,8);
 
         MatrizDeForma(0,0) = N1; MatrizDeForma(1,1) = N1;
         MatrizDeForma(0,2) = N2; MatrizDeForma(1,3) = N2;
@@ -57,43 +70,46 @@ private:
         return std::move(MatrizDeForma);
     }
 
-    FEM::Matriz<> MatrizJacobiana(const T pontoX, const T pontoY) const {
+
+    matriz MatrizJacobiana(const T pontoX, const T pontoY) const {
 
         // Função que implementa a matriz jacobiana com base nas coordenadas naturais
         // e geométricas, de maneira direta.
 
-        FEM::Matriz<> matrizJacobiana(4,4);
+        matriz matrizJacobiana(4,4);
 
-        matrizJacobiana(0,0) = (((1.0 - pontoY)/4.0) * (nosDoElemento[1].GetCoordenadas()[0] -
-                                nosDoElemento[0].GetCoordenadas()[0])) + (((1.0 + pontoY)/4.0) *
-                                (nosDoElemento[2].GetCoordenadas()[0] - nosDoElemento[3].GetCoordenadas()[0]));
+        auto nos = this->GetCoordenada();
 
-        matrizJacobiana(0,1) = (((1.0 - pontoY)/4.0) * (nosDoElemento[1].GetCoordenadas()[1] -
-                                nosDoElemento[0].GetCoordenadas()[1])) + (((1.0 + pontoY)/4.0) *
-                                (nosDoElemento[2].GetCoordenadas()[1] - nosDoElemento[3].GetCoordenadas()[1]));
+        matrizJacobiana(0,0) = (((1.0 - pontoY)/4.0) * (nos[1].GetCoordenadas()[0] -
+                                nos[0].GetCoordenadas()[0])) + (((1.0 + pontoY)/4.0) *
+                                (nos[2].GetCoordenadas()[0] - nos[3].GetCoordenadas()[0]));
 
-        matrizJacobiana(1,0) = (((1.0 - pontoX)/4.0) * (nosDoElemento[3].GetCoordenadas()[0] -
-                                nosDoElemento[0].GetCoordenadas()[0])) + (((1.0 + pontoX)/4.0) *
-                                (nosDoElemento[2].GetCoordenadas()[0] - nosDoElemento[1].GetCoordenadas()[0]));
+        matrizJacobiana(0,1) = (((1.0 - pontoY)/4.0) * (nos[1].GetCoordenadas()[1] -
+                                nos[0].GetCoordenadas()[1])) + (((1.0 + pontoY)/4.0) *
+                                (nos[2].GetCoordenadas()[1] - nos[3].GetCoordenadas()[1]));
 
-        matrizJacobiana(1,1) = (((1.0 - pontoX)/4.0) * (nosDoElemento[3].GetCoordenadas()[1] -
-                                nosDoElemento[0].GetCoordenadas()[1])) + (((1.0 + pontoX)/4.0) *
-                                (nosDoElemento[2].GetCoordenadas()[1] - nosDoElemento[1].GetCoordenadas()[1]));
+        matrizJacobiana(1,0) = (((1.0 - pontoX)/4.0) * (nos[3].GetCoordenadas()[0] -
+                                nos[0].GetCoordenadas()[0])) + (((1.0 + pontoX)/4.0) *
+                                (nos[2].GetCoordenadas()[0] - nos[1].GetCoordenadas()[0]));
+
+        matrizJacobiana(1,1) = (((1.0 - pontoX)/4.0) * (nos[3].GetCoordenadas()[1] -
+                                nos[0].GetCoordenadas()[1])) + (((1.0 + pontoX)/4.0) *
+                                (nos[2].GetCoordenadas()[1] - nos[1].GetCoordenadas()[1]));
 
 
         return std::move(matrizJacobiana);
     }
 
     // Calcula o determinante da matriz jacobiana.
-    T DeterminanteMatrizJacobiana(const FEM::Matriz<> &matrizJacobiana) const
+    T DeterminanteMatrizJacobiana(const matriz &matrizJacobiana) const
     {return (matrizJacobiana(0,0) * matrizJacobiana(1,1)) - (matrizJacobiana(0,1) * matrizJacobiana(1,0));}
 
 
     // Implementação da matriz jacobiana inversa:
-    FEM::Matriz<> MatrizJacobianaInversa(const FEM::Matriz<> &matrizJacobiana, const T &determinanteMatrizJacobiana) const {
+    matriz MatrizJacobianaInversa(const matriz &matrizJacobiana, const T &determinanteMatrizJacobiana) const {
 
         // Função que implementa a matriz jacobiana inversa.
-        FEM::Matriz<> matrizJacobianaInversa(4,4);
+        matriz matrizJacobianaInversa(4,4);
 
         // Inserção dos valores dos elementos.
         matrizJacobianaInversa(0,0) = (1.0/determinanteMatrizJacobiana) * matrizJacobiana(1,1);
@@ -105,12 +121,12 @@ private:
 
     }
 
-    FEM::Matriz<> MatrizH(const FEM::Matriz<> &matrizJacobianaInversa) const {
+    matriz MatrizH(const matriz &matrizJacobianaInversa) const {
 
         // FEM::Matriz H é composta pelo inverso do jacobiano, disposto no primeiro e
         // quarto quadrante da matriz.
 
-        FEM::Matriz<> matrizH(4,4);
+        matriz matrizH(4,4);
 
         matrizH(0,0) = matrizJacobianaInversa(0,0);
         matrizH(0,1) = matrizJacobianaInversa(0,1);
@@ -125,9 +141,9 @@ private:
     }
 
     // Cálculo da matriz deformação:
-    FEM::Matriz<> MatrizDeformacao(const T pontoX, const T pontoY) const {
+    matriz MatrizDeformacao(const T pontoX, const T pontoY) const {
 
-        FEM::Matriz<> matrizDeformacao(4,8);
+        matriz matrizDeformacao(4,8);
 
         matrizDeformacao(0,0) = -1.0 / 4.0 + pontoY / 4.0;
         matrizDeformacao(0,2) = 1.0 / 4.0 - pontoY / 4.0;
@@ -150,14 +166,14 @@ private:
     }
 
     // Cálculo da matriz cinemática B:
-    FEM::Matriz<> MatrizCinematica(const T pontoX, const T pontoY, const FEM::Matriz<> &matrizJacobianaInversa) const {
+    matriz MatrizCinematica(const T pontoX, const T pontoY, const matriz &matrizJacobianaInversa) const {
 
         // Inicialização das matrizes de deformação e da matriz H:
         auto matrizH = MatrizH(matrizJacobianaInversa);
         auto matrizDeDeformacao = MatrizDeformacao(pontoX, pontoY);
 
         // Inicializção da matriz auxiliar:
-        FEM::Matriz<> matrizAuxiliar(3,4);
+        matriz matrizAuxiliar(3,4);
 
         matrizAuxiliar(0,0) = 1.0;
         matrizAuxiliar(1,3) = 1.0;
@@ -189,8 +205,8 @@ private:
 public:
 
     // Construtor:
-    QuadrilateroIsoparametrico(boost::ptr_vector< FEM::No<FEM::Ponto2D, T> > &coordenadasGeometricas,
-                               const FEM::Material<T> &material, const T espessura)
+    QuadrilateroIsoparametrico(ptr_face &coordenadasGeometricas,
+                               const Material<T> &material, const T espessura)
                                : nosDoElemento(coordenadasGeometricas),
                                  material(material),
                                  matrizConstitutiva(3,3),
@@ -207,10 +223,10 @@ public:
 
     // Inserção do produto triplo da integração de gauss, com a inicialização
     // dos elementos do produto, a inicialização dos três pontos é necessária
-    // para a implementação da função na quadratura:
+    // para a implementação da função na integracao:
 
-    FEM::Matriz<FEM::EstruturaMatrizSimetricaCheia, T> ProdutoTriplo(const T pontoX = 0.0,
-    const T pontoY = 0.0, const T PontoZ = 0.0) const {
+    matriz_sim ProdutoTriplo(const T pontoX = 0.0, const T pontoY = 0.0
+                                                 , const T PontoZ = 0.0) const {
 
         auto matrizJacobiana = MatrizJacobiana(pontoX, pontoY);
         auto determinanteJacobiano = DeterminanteMatrizJacobiana(matrizJacobiana);
@@ -229,14 +245,28 @@ public:
         int numeroDePontos = 2;
 
         // Integração numérica segundo a quadradatura de Gauss:
-        using elemento = FEM::QuadraturaDeGauss<QuadrilateroIsoparametrico,
-                                                FEM::EstruturaMatrizSimetricaCheia, T>;
 
-        FEM::Matriz<FEM::EstruturaMatrizSimetricaCheia, T>
-        matrizRigidezElementar = elemento:: Integral(*this, numeroDePontos);
+        matriz_sim matrizRigidezElementar = integracao::Integral(*this, numeroDePontos);
 
         return std::move(matrizRigidezElementar);
     }
+
+    auto GetCoordenada() const {
+
+        // Retorna o vetor contendo as coordenadas das faces do elemento, colocando-as
+        // em um vetor para melhor acesso.
+
+        std::vector<FEM::No<FEM::Ponto2D, T> > vetor;
+
+        typename ptrLista::const_iterador it;
+
+        for(it = nosDoElemento->GetPontos().begin(); it != nosDoElemento->GetPontos().end(); it++) {
+            vetor.push_back(*it);
+        }
+
+        return std::move(vetor);
+    }
+
 };
 
 }

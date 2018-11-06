@@ -11,10 +11,13 @@ set(CMAKE_CXX_COMPILER_ID "GNU")
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "../algebra"
+  "../analise"
   "../apoio"
+  "../container"
   "../estrutura"
   "../geometria"
   "../integracao"
+  "../malha"
   "../material"
   "../matriz"
   "../nos"
