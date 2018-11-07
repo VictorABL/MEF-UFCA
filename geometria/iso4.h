@@ -27,20 +27,21 @@ class QuadrilateroIsoparametrico {
 
 public:
 
-    typedef typename FEM::Face<FEM::Ponto2D, T> faces_no;
-
     typedef typename FEM::QuadraturaDeGauss<QuadrilateroIsoparametrico, LinearElastico,
                                             FEM::EstruturaMatrizSimetricaCheia, T> integracao;
 
     typedef typename FEM::Matriz<FEM::EstruturaMatrizSimetricaCheia, T> matriz_sim;
+
     typedef typename FEM::Matriz<FEM::EstruturaMatrizGenerica, T> matriz;
 
+
     typedef typename FEM::ListaPonteiro<FEM::No<FEM::Ponto2D, T> > ptrLista;
-    typedef typename std::shared_ptr<faces_no> ptr_face;
+
+    typedef typename std::shared_ptr<FEM::Face<FEM::Ponto2D, T> > ptr_face;
 
 private:
 
-    // Vetor que contem os nós dos elementos:
+    // Ponteiro da face do elemento na malha:
     ptr_face nosDoElemento;
     // Classe de características físicas do material.
     Material<T> material;
