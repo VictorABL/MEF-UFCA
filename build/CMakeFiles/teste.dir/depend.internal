@@ -3,6 +3,7 @@
 
 CMakeFiles/teste.dir/testes.cpp.o
  ../algebra/algebra.h
+ ../analise/analise.h
  ../apoio/apoio.h
  ../container/lista_ponteiro.h
  ../container/vetor_ponteiro.h
@@ -20,6 +21,5 @@ CMakeFiles/teste.dir/testes.cpp.o
  ../nos/no.h
  ../ponto/dois_d.h
  ../ponto/tres_d.h
- /home/victor/Documentos/Programas C++/MEF - UFCA/analise.h
  /home/victor/Documentos/Programas C++/MEF - UFCA/includes.h
  /home/victor/Documentos/Programas C++/MEF - UFCA/testes.cpp

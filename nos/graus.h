@@ -10,6 +10,7 @@ namespace FEM {
 
 template<class Tipo>
 class GrausDeLiberdade {
+
 private:
 
     // Define o vetor de numeração dos graus de liberdade.

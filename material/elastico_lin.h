@@ -28,7 +28,7 @@ public:
                       moduloElasticidade(),
                       coeficientePoisson() {}
 
-    // Sobrecarregado:
+    // Sobrecarregado com os parâmetros:
     LinearElastico (const std::string nome, const T moduloElasticidade,
                                             const T coeficientePoisson)
                    :nome(nome),

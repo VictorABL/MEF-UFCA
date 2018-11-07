@@ -26,7 +26,9 @@ private:
 public:
 
     // Construtor:
-    Apoio(const shared_ptr &no, const std::vector<int> &apoio)
+    Apoio(const shared_ptr &no,
+            const std::vector<int> &apoio)
+
           : ponteiro(no),
             apoios(apoio)
             {RestringirNo();}

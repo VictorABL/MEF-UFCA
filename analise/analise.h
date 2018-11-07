@@ -60,7 +60,8 @@ private:
     // listaCarregamentos;
     ptrLista_materiais listaMateriais;
 
-
+    // #################################################################################################################
+    // #################################################################################################################
 
     // Cria uma malha com base nos parâmetros associados:
     void Desenhar() {malha = ref_malha(tamanho, material, espessura, grausDeLiberdade);}
@@ -68,6 +69,20 @@ private:
     void AdicionaNo() {vetorPontos = malha.GetPontos();}
 
     void AdicionaElementos() {listaElementos = malha.GetElementos();}
+
+    // Função de impressão dos graus no console:
+    void ImprimirGraus () {
+
+        // Iterador:
+        typename ptrVetor_pontos::iterador it;
+
+        // Impressão:
+        for(it = vetorPontos.begin(); it != vetorPontos.end(); it++) {
+            auto vetor = it->GetVetorGrausDeLiberdade();
+            for(int i = 0; i < vetor.size(); i++)
+            std::cout << vetor[i] << '\n';
+        }
+    }
 
 public:
 
@@ -91,43 +106,42 @@ public:
         AdicionaElementos();
     }
 
+    // Função que adiciona um apoio, com o indexador do nó no vetor:
+    void AdicionarApoio(const int indexador, const vetor_int &restricao) {
 
-    void AdicionarApoio( int indexador, const vetor_int &restricao) {
+        // Verifica se o vetorPontos já foi iniciado:
+        if (!(vetorPontos.Vazio())) {
 
-        // Cria um objeto apoio com a referência ao nó indicado pelo indexador:
-        shared_ptr_apoio apoio(new FEM::Apoio<Dimensao, Tipo>(vetorPontos(indexador), restricao));
+            // Cria um objeto apoio com a referência ao nó indicado pelo indexador:
+            shared_ptr_apoio apoio(new FEM::Apoio<Dimensao, Tipo>(vetorPontos(indexador), restricao));
 
-        // Adiciona à lista de apoios da estrutura:
-        listaApoios.AdicionarFinal(apoio);
+            // Adiciona à lista de apoios da estrutura:
+            listaApoios.AdicionarFinal(apoio);
+
+        }
     }
 
 
     // Função de enumeração dos graus de liberdade da estrutura:
     void EnumerarGraus() {
 
-        // Iterador:
-        typename ptrVetor_pontos::iterador it;
+        // Verifica se o vetor de pontos já foi iniciado:
+        if(!(vetorPontos.Vazio())) {
 
-        // Enumeração:
-        for(it = vetorPontos.begin(); it != vetorPontos.end(); it++) {
-            it->EnumeraGrausDeLiberdade();
+            // Iterador:
+            typename ptrVetor_pontos::iterador it;
+
+            // Enumeração:
+            for(it = vetorPontos.begin(); it != vetorPontos.end(); it++) {
+                it->EnumeraGrausDeLiberdade();
+            }
+
         }
 
-
+        ImprimirGraus();
 
     }
 
-    void ImprimirGraus () {
-
-        // Iterador:
-        typename ptrVetor_pontos::iterador it;
-
-        for(it = vetorPontos.begin(); it != vetorPontos.end(); it++) {
-            auto vetor = it->GetVetorGrausDeLiberdade();
-            for(int i = 0; i < vetor.size(); i++)
-            std::cout << vetor[i] << '\n';
-        }
-    }
 
     // Retorno da malha:
     ref_malha &GetMalha() {return malha;}

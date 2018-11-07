@@ -24,6 +24,11 @@ public:
     typedef boost::indirect_iterator<typename Estrutura::const_iterator> const_iterador;
 
 
+    typedef typename Estrutura::iterator ptr_iterador;
+
+    typedef typename Estrutura::const_iterator ptr_const_iterador;
+
+
     using Tipo = TipoDeDado;
 
 private:
@@ -74,6 +79,8 @@ public:
 
     void Trocar(ListaPonteiro &ponteiro_lista) {container.swap(ponteiro_lista.GetContainer());}
 
+    // Verifica se a lista possui elementos:
+    bool Vazio() const {return container.empty();}
 
 };
 }

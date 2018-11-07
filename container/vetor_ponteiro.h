@@ -26,6 +26,10 @@ public:
     typedef boost::indirect_iterator<typename Estrutura::const_iterator> const_iterador;
 
 
+    typedef typename Estrutura::iterator ptr_iterador;
+
+    typedef typename Estrutura::const_iterator ptr_const_iterador;
+
     using Tipo = TipoDeDado;
 
 private:
@@ -83,9 +87,12 @@ public:
     const_iterador end() const {return const_iterador(container.end());}
 
     // Tamanho do container:
-    auto Tamanho() {return container.size();}
+    auto Tamanho() const {return container.size();}
 
     void Trocar(VetorPonteiro &ponteiro_vetor) {container.swap(ponteiro_vetor.GetContainer());}
+
+    // Verifica se o vetor possui elementos:
+    bool Vazio() const {return container.empty();}
 
 };
 }

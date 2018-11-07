@@ -11,8 +11,10 @@ namespace FEM {
 template<template<class T> class Estrutura, class Tipo = double>
 class No {
 private:
+
     // Define a estrutura do ponto, ou seja, suas dimensões pondendo ser
     // 3D ou 2D.
+
     Estrutura<Tipo> dimensao;
     // Define o vetor de graus de liberdade da estrutura.
     GrausDeLiberdade<int> vetorGrausDeLiberdade;

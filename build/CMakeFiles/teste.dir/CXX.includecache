@@ -18,6 +18,10 @@ vetor.h
 matrizes.h
 ../algebra/matrizes.h
 
+../analise/analise.h
+malha.h
+../analise/malha.h
+
 ../apoio/apoio.h
 no.h
 ../apoio/no.h
@@ -153,10 +157,6 @@ graus.h
 ../ponto/dois_d.h
 
 ../ponto/tres_d.h
-
-/home/victor/Documentos/Programas C++/MEF - UFCA/analise.h
-malha.h
-/home/victor/Documentos/Programas C++/MEF - UFCA/malha.h
 
 /home/victor/Documentos/Programas C++/MEF - UFCA/includes.h
 lista_ponteiro.h

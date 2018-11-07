@@ -50,6 +50,11 @@ private:
     // Dimensão do elemento:
     int dimensao = 2;
 
+
+    // #################################################################################################################
+    // #################################################################################################################
+
+
     // Função de inicialização da matriz de forma do elemento:
     matriz DefinirMatrizDeForma(const T pontoX, const T pontoY) const {
 
