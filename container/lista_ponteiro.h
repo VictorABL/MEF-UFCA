@@ -20,7 +20,9 @@ class ListaPonteiro {
 public:
 
     typedef boost::indirect_iterator<typename Estrutura::iterator> iterador;
+
     typedef boost::indirect_iterator<typename Estrutura::const_iterator> const_iterador;
+
 
     using Tipo = TipoDeDado;
 

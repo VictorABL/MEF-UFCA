@@ -22,13 +22,20 @@ class Malha {
 public:
 
     typedef typename FEM::ListaPonteiro<Elemento<Material, Tipo> > ptrLista_elementos;
+
     typedef typename FEM::ListaPonteiro<FEM::Face<Dimensao, Tipo> > ptrLista_faces;
+
     typedef typename FEM::ListaPonteiro<FEM::No<Dimensao, Tipo> > ptrLista_pontos;
+
     typedef typename FEM::VetorPonteiro<FEM::No<Dimensao, Tipo> > ptrVetor_pontos;
 
+
     typedef typename std::shared_ptr<Elemento<Material, Tipo> > shared_ptr_elementos;
+
     typedef typename std::shared_ptr<FEM::Face<Dimensao, Tipo> > shared_ptr_face;
+
     typedef typename std::shared_ptr<FEM::No<Dimensao, Tipo> > shared_ptr_pontos;
+
 
     using ptr_face = typename FEM::Face<Dimensao, Tipo>;
 

@@ -18,14 +18,21 @@ public:
 
 
     typedef typename FEM::ListaPonteiro<Elemento<Material, Tipo> > ptrLista_elementos;
+
     typedef typename FEM::ListaPonteiro<FEM::Face<Dimensao, Tipo> > ptrLista_faces;
+
     typedef typename FEM::VetorPonteiro<FEM::No<Dimensao, Tipo> > ptrVetor_pontos;
+
     typedef typename FEM::ListaPonteiro<FEM::Apoio<Dimensao, Tipo> > ptrLista_apoios;
+
     typedef typename FEM::ListaPonteiro<Material<Tipo> > ptrLista_materiais;
+
 
     typedef typename FEM::Malha<Elemento, Material, Dimensao, Tipo> ref_malha;
 
+
     typedef typename std::shared_ptr< FEM::No<Dimensao, Tipo> > shared_ptr_no;
+
     typedef typename std::shared_ptr< FEM::Apoio<Dimensao, Tipo> > shared_ptr_apoio;
 
 
