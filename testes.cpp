@@ -28,7 +28,9 @@ int main() {
 
     FEM::LinearElastico<double> mat("aco", 200E9, 0.3);
 
-    auto a = FEM::Analise<FEM::QuadrilateroIsoparametrico,FEM::LinearElastico, FEM::Ponto2D, double>(8, mat, 3E-3, 3);
+    typedef FEM::Analise<FEM::QuadrilateroIsoparametrico,FEM::LinearElastico, FEM::Ponto2D, double> analise;
+
+    auto a = analise(8, mat, 3E-3, 3);
 
     std::vector<int> v = {0,1};
     a.CriarMalha();

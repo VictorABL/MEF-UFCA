@@ -36,9 +36,10 @@ private:
     static std::vector<double> weight4;
     static std::vector<std::vector<double> > weight;
 
+    QuadraturaDeGauss() {}
+
 public:
 
-    QuadraturaDeGauss() {}
 
     static matriz Integral(const TipoDeElemento<Material, T> &Elemento,
                                            const int numeroDePontos) {
@@ -61,7 +62,7 @@ public:
 private:
 
     static auto IntegralDimensao1(const TipoDeElemento<Material, T> &Elemento,
-    const int numeroDePontos) -> decltype(Elemento.ProdutoTriplo(xi[numeroDePontos][0])) {
+                                                     const int numeroDePontos) {
 
         auto K = Elemento.ProdutoTriplo(xi[numeroDePontos - 1][0]);
 
@@ -76,8 +77,8 @@ private:
     }
 
 
-    static auto IntegralDimensao2(const TipoDeElemento<Material, T> &Elemento,const int numeroDePontos)
-    -> decltype(Elemento.ProdutoTriplo(xi[numeroDePontos][0], xi[numeroDePontos][0])) {
+    static auto IntegralDimensao2(const TipoDeElemento<Material, T> &Elemento,
+                                                     const int numeroDePontos) {
 
         auto K = Elemento.ProdutoTriplo(xi[numeroDePontos - 1][0], xi[numeroDePontos - 1][0]);
 
@@ -96,8 +97,8 @@ private:
         return std::move(K);
     }
 
-    static auto IntegralDimensao3(const TipoDeElemento<Material, T> &Elemento, const int numeroDePontos)
-    -> decltype(Elemento.ProdutoTriplo(xi[numeroDePontos][0], xi[numeroDePontos][0], xi[numeroDePontos][0])) {
+    static auto IntegralDimensao3(const TipoDeElemento<Material, T> &Elemento,
+                                                     const int numeroDePontos) {
 
         auto K = Elemento.ProdutoTriplo(xi[numeroDePontos - 1][0],
                                         xi[numeroDePontos - 1][0], xi[numeroDePontos - 1][0]);
