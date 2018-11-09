@@ -67,9 +67,11 @@ private:
 
     // Cria uma malha com base nos parâmetros associados:
     void Desenhar(const Tipo tamanho, shared_ptr_material &material,
-                    const Tipo espessura, const int grausDeLiberdade)
+                    const Tipo espessura, const int grausDeLiberdade) {
 
-        {malha = ref_malha(tamanho, material, espessura, grausDeLiberdade);}
+         malha = ref_malha(tamanho, material, espessura, grausDeLiberdade);
+         listaMateriais.AdicionarFinal(material);
+     }
 
     // Adiciona o vetor de nós da malha à classe:
     void AdicionaNo() {vetorPontos = malha.GetPontos();}
@@ -101,6 +103,7 @@ public:
     // Destrutor:
     ~Analise () {}
 
+    // Cria a malha para análise, com os devidos parâmetros.
     void CriarMalha(const Tipo tamanho, shared_ptr_material &material,
                         const Tipo espessura, const int grausDeLiberdade) {
 
@@ -144,7 +147,6 @@ public:
 
 
     }
-
 
     // Retorno da malha:
     ref_malha &GetMalha() {return malha;}
