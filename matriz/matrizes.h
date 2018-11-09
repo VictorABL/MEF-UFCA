@@ -1,6 +1,6 @@
 
-#ifndef MATRIZES_H
-#define MATRIZES_H
+#ifndef MEF_UFCA_MATRIZES_H
+#define MEF_UFCA_MATRIZES_H
 
 
 #include "crs.h"

@@ -1,6 +1,6 @@
 
-#ifndef VETOR_H
-#define VETOR_H
+#ifndef MEF_UFCA_VETOR_H
+#define MEF_UFCA_VETOR_H
 
 #include <vector>
 #include <math.h>

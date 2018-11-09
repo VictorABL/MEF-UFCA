@@ -1,7 +1,7 @@
 
 
-#ifndef LISTA_PONTEIRO_H
-#define LISTA_PONTEIRO_H
+#ifndef MEF_UFCA_LISTA_PONTEIRO_H
+#define MEF_UFCA_LISTA_PONTEIRO_H
 
 #include <list>
 #include <boost/iterator/indirect_iterator.hpp>

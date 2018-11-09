@@ -1,6 +1,6 @@
 
-#ifndef FACE_H
-#define FACE_H
+#ifndef MEF_UFCA_FACE_H
+#define MEF_UFCA_FACE_H
 
 #include "lista_ponteiro.h"
 #include "vetor_ponteiro.h"

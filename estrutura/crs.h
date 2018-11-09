@@ -1,6 +1,6 @@
 
-#ifndef CRS_H
-#define CRS_H
+#ifndef MEF_UFCA_CRS_H
+#define MEF_UFCA_CRS_H
 
 #include <vector>
 #include <math.h>

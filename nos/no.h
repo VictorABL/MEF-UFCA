@@ -1,6 +1,6 @@
 
-#ifndef NO_H
-#define NO_H
+#ifndef MEF_UFCA_NO_H
+#define MEF_UFCA_NO_H
 
 #include "dois_d.h"
 #include "tres_d.h"

@@ -1,6 +1,6 @@
 
-#ifndef GEOMETRIAS_H
-#define GEOMETRIAS_H
+#ifndef MEF_UFCA_GEOMETRIAS_H
+#define MEF_UFCA_GEOMETRIAS_H
 
 #include<vector>
 #include <boost/iterator/indirect_iterator.hpp>

@@ -1,6 +1,6 @@
 
-#ifndef ELASTICO_LIN_H
-#define ELASTICO_LIN_H
+#ifndef MEF_UFCA_ELASTICO_LIN_H
+#define MEF_UFCA_ELASTICO_LIN_H
 
 #include <vector>
 #include <string>

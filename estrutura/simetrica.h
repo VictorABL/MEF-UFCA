@@ -1,6 +1,6 @@
 
-#ifndef  SIMETRICA_H
-#define  SIMETRICA_H
+#ifndef MEF_UFCA_SIMETRICA_H
+#define MEF_UFCA_SIMETRICA_H
 
 #include <vector>
 #include <math.h>

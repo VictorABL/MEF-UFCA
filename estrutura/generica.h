@@ -1,6 +1,6 @@
 
-#ifndef GENERICA_H
-#define GENERICA_H
+#ifndef MEF_UFCA_GENERICA_H
+#define MEF_UFCA_GENERICA_H
 
 #include <vector>
 #include <math.h>

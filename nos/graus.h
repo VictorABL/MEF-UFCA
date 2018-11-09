@@ -1,6 +1,6 @@
 
-#ifndef GRAUS_H
-#define GRAUS_H
+#ifndef MEF_UFCA_GRAUS_H
+#define MEF_UFCA_GRAUS_H
 
 #include<vector>
 

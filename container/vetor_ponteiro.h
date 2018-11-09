@@ -1,7 +1,7 @@
 
 
-#ifndef VETOR_PONTEIRO_H
-#define VETOR_PONTEIRO_H
+#ifndef MEF_UFCA_VETOR_PONTEIRO_H
+#define MEF_UFCA_VETOR_PONTEIRO_H
 
 #include <vector>
 #include<memory>

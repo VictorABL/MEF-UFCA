@@ -1,6 +1,6 @@
 
-#ifndef MALHA_H
-#define MALHA_H
+#ifndef MEF_UFCA_MALHA_H
+#define MEF_UFCA_MALHA_H
 
 #include <memory>
 #include <math.h>

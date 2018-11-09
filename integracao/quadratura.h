@@ -1,6 +1,6 @@
 
-#ifndef QUADRATURA_H
-#define QUADRATURA_H
+#ifndef MEF_UFCA_QUADRATURA_H
+#define MEF_UFCA_QUADRATURA_H
 
 
 #include "algebra.h"

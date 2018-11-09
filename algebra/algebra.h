@@ -1,6 +1,6 @@
 
-#ifndef ALGEBRA_H
-#define ALGEBRA_H
+#ifndef MEF_UFCA_ALGEBRA_H
+#define MEF_UFCA_ALGEBRA_H
 
 #include "crs.h"
 #include "generica.h"
