@@ -39,12 +39,14 @@ public:
 
     typedef typename std::shared_ptr<FEM::Face<FEM::Ponto2D, T> > ptr_face;
 
+    typedef typename std::shared_ptr<Material<T> > ptr_material;
+
 private:
 
     // Ponteiro da face do elemento na malha:
     ptr_face nosDoElemento;
     // Classe de características físicas do material.
-    Material<T> material;
+    ptr_material material;
     // Inicialização da variável da matriz característica do elemento:
     matriz matrizConstitutiva;
     T espessura;
@@ -198,21 +200,21 @@ private:
     void MatrizConstitutiva() {
 
         // Inicialiação da constante de multiplicação
-        T constante = material.ModuloElasticidade()/((1.0 + material.CoeficientePoisson()) *
-                      (1.0 - (2.0 * material.CoeficientePoisson())));
+        T constante = material->ModuloElasticidade()/((1.0 + material->CoeficientePoisson()) *
+                      (1.0 - (2.0 * material->CoeficientePoisson())));
 
-        matrizConstitutiva(0,0) = constante * (1.0 - material.CoeficientePoisson());
-        matrizConstitutiva(0,1) = constante * (material.CoeficientePoisson());
-        matrizConstitutiva(1,0) = constante * (material.CoeficientePoisson());
-        matrizConstitutiva(1,1) = constante * (1.0 - material.CoeficientePoisson());
-        matrizConstitutiva(2,2) = constante * (1.0 - ((2.0 * material.CoeficientePoisson())/2.0));
+        matrizConstitutiva(0,0) = constante * (1.0 - material->CoeficientePoisson());
+        matrizConstitutiva(0,1) = constante * (material->CoeficientePoisson());
+        matrizConstitutiva(1,0) = constante * (material->CoeficientePoisson());
+        matrizConstitutiva(1,1) = constante * (1.0 - material->CoeficientePoisson());
+        matrizConstitutiva(2,2) = constante * (1.0 - ((2.0 * material->CoeficientePoisson())/2.0));
     }
 
 public:
 
     // Construtor:
     QuadrilateroIsoparametrico(ptr_face &coordenadasGeometricas,
-                               const Material<T> &material, const T espessura)
+                                ptr_material &material, const T espessura)
                                : nosDoElemento(coordenadasGeometricas),
                                  material(material),
                                  matrizConstitutiva(3,3),

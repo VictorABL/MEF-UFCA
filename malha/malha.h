@@ -36,6 +36,8 @@ public:
 
     typedef typename std::shared_ptr<FEM::No<Dimensao, Tipo> > shared_ptr_pontos;
 
+    typedef typename std::shared_ptr< Material<Tipo> > shared_ptr_material;
+
 
     using ptr_face = typename FEM::Face<Dimensao, Tipo>;
 
@@ -49,7 +51,7 @@ private:
     // Comprimento da malha.
     int comprimento;
     // Material da malha.
-    Material<Tipo> material;
+    shared_ptr_material material;
     // Espessura.
     Tipo espessura;
     // Graus de liberdade do nó da malha.
@@ -129,7 +131,7 @@ public:
     // Padrão:
     Malha(): comprimento(), material(), espessura(), grausDeLiberdade() {}
 
-    Malha(const int comprimento, const Material<Tipo> &material,
+    Malha(const int comprimento, shared_ptr_material &material,
                const Tipo espessura, const int grausDeLiberdade)
 
           : comprimento(comprimento),

@@ -31,9 +31,11 @@ public:
     typedef typename FEM::Malha<Elemento, Material, Dimensao, Tipo> ref_malha;
 
 
+    typedef typename std::shared_ptr< FEM::Apoio<Dimensao, Tipo> > shared_ptr_apoio;
+
     typedef typename std::shared_ptr< FEM::No<Dimensao, Tipo> > shared_ptr_no;
 
-    typedef typename std::shared_ptr< FEM::Apoio<Dimensao, Tipo> > shared_ptr_apoio;
+    typedef typename std::shared_ptr< Material<Tipo> > shared_ptr_material;
 
 
     using vetor_int = std::vector<int>;
@@ -44,7 +46,7 @@ private:
     // Tamanho da malha;
     Tipo tamanho;
     // Material da malha.
-    Material<Tipo> material;
+    shared_ptr_material material;
     // Espessura da malha.
     Tipo espessura;
     // Define o número de graus de liberdade para a estrutura:
@@ -64,7 +66,11 @@ private:
     // #################################################################################################################
 
     // Cria uma malha com base nos parâmetros associados:
-    void Desenhar() {malha = ref_malha(tamanho, material, espessura, grausDeLiberdade);}
+    void Desenhar(const Tipo tamanho, shared_ptr_material &material,
+                    const Tipo espessura, const int grausDeLiberdade)
+
+        {malha = ref_malha(tamanho, material, espessura, grausDeLiberdade);}
+
     // Adiciona o vetor de nós da malha à classe:
     void AdicionaNo() {vetorPontos = malha.GetPontos();}
 
@@ -87,21 +93,18 @@ private:
 public:
 
     // Constutor:
-    Analise (const Tipo tamanho, const Material<Tipo> &material,
-              const Tipo espessura, const int grausDeLiberdade)
-
-            : tamanho(tamanho),
-              material(material),
-              espessura(espessura),
-              grausDeLiberdade(grausDeLiberdade),
-              listaElementos() ,vetorPontos() ,listaApoios() {}
+    Analise (): listaElementos(),
+                vetorPontos(),
+                listaApoios(),
+                listaMateriais() {}
 
     // Destrutor:
     ~Analise () {}
 
-    void CriarMalha() {
+    void CriarMalha(const Tipo tamanho, shared_ptr_material &material,
+                        const Tipo espessura, const int grausDeLiberdade) {
 
-        Desenhar();
+        Desenhar(tamanho, material, espessura, grausDeLiberdade);
         AdicionaNo();
         AdicionaElementos();
     }
@@ -136,9 +139,9 @@ public:
                 it->EnumeraGrausDeLiberdade();
             }
 
+            ImprimirGraus();
         }
 
-        ImprimirGraus();
 
     }
 
